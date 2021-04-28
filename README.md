@@ -1,5 +1,6 @@
 
 <h1>Sisregvg</h1>
+
 ### Sistema de Registro de Gastos para Valle Grande (Jhianpol Ramos | José Correa)
 
 ### Objetivos del sistema
