@@ -1,43 +1,43 @@
 package controlador;
 
-import dao.PersonaD;
+import dao.DocumentosD;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import modelo.PersonaM;
+import modelo.DocumentosM;
 
 //Notación CDI
-@Named(value = "personaC")
+@Named(value = "DocumentosC")
 //@Dependent
 @SessionScoped
-public class PersonaC implements Serializable {
+public class DocumentosC implements Serializable {
 
-    private PersonaM per;
-    private PersonaD dao;
-    private List<PersonaM> listadoPer;
+    private DocumentosM documento;
+    private DocumentosD dao;
+    private List<DocumentosM> listadoDocumentos;
 
-    public PersonaC() {
-        per = new PersonaM();
-        dao = new PersonaD();
+    public DocumentosC() {
+        documento = new DocumentosM();
+        dao = new DocumentosD();
     }
 
     public void registrar() throws Exception {
         try {
-            dao.registrar(per);
+            dao.registrar(documento);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Registrado con Exito"));
             limpiar();
             listar();
         } catch (Exception e) {
-            System.out.println("Error en registrarC " + per.getNombre());
+            System.out.println("Error en registrarC " + documento.getImporte());
         }
     }
 
     public void modificar() throws Exception {
         try {
-            dao.modificar(per);
+            dao.modificar(documento);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Modificado con éxito"));
             limpiar();
             listar();
@@ -46,9 +46,9 @@ public class PersonaC implements Serializable {
         }
     }
 
-    public void eliminar(PersonaM pers) throws Exception {
+    public void eliminar(DocumentosM documento) throws Exception {
         try {
-            dao.eliminar(pers);
+            dao.eliminar(documento);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "OK", "Eliminado con éxito"));
             limpiar();
             listar();
@@ -80,40 +80,41 @@ public class PersonaC implements Serializable {
 //    }
     
     public void limpiar() {
-        per = new PersonaM();
+        documento = new DocumentosM();
     }
 
     public void listar() {
         try {
-            listadoPer = dao.listarTodos();
+            listadoDocumentos = dao.listarTodos();
         } catch (Exception e) {
             System.out.println("Error en listarC " + e.getMessage());
         }
     }
 //metodos generados
 
-    public PersonaM getPer() {
-        return per;
+    public DocumentosM getDocumento() {
+        return documento;
     }
 
-    public void setPer(PersonaM per) {
-        this.per = per;
+    public void setDocumento(DocumentosM documento) {
+        this.documento = documento;
     }
 
-    public PersonaD getDao() {
+    public DocumentosD getDao() {
         return dao;
     }
 
-    public void setDao(PersonaD dao) {
+    public void setDao(DocumentosD dao) {
         this.dao = dao;
     }
 
-    public List<PersonaM> getListadoPer() {
-        return listadoPer;
+    public List<DocumentosM> getListadoDocumentos() {
+        return listadoDocumentos;
     }
 
-    public void setListadoPer(List<PersonaM> listadoPer) {
-        this.listadoPer = listadoPer;
-    }   
+    public void setListadoDocumentos(List<DocumentosM> listadoDocumentos) {
+        this.listadoDocumentos = listadoDocumentos;
+    }
+
 
 }

@@ -16,7 +16,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
     @Override
     public void registrar(PersonaM per) throws Exception {
     
-        String sql = "insert into PERSONA (NOMPER,APEPER,DNIPER,CELPER,EMAPER,SEXPER,CARPER) values (?,?,?,?,?,?,?)";
+        String sql = "insert into PERSONAL (NOMPER,APEPER,DNIPER,CELPER,EMAPER,SEXPER,CARPER) values (?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);
             ps.setString(1, per.getNombre());
@@ -39,7 +39,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
 
     @Override
     public void modificar(PersonaM per) throws Exception {
-        String sql = "update PERSONA set NOMPER=?, APEPER=?,DNIPER=?,CELPER=?,EMAPERr=?,SEXPER=?,CARPER=?, where CODPER=? ";
+        String sql = "update PERSONAL set NOMPER=?, APEPER=?,DNIPER=?,CELPER=?,EMAPER=?,SEXPER=?,CARPER=? where CODPER=? ";
         try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);
             ps.setString(1, per.getNombre());
@@ -59,7 +59,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
 
     @Override
     public void eliminar(PersonaM per) throws Exception {
-        String sql = "delete from PERSONA where CODPER=?";
+        String sql = "delete from PERSONAL where CODPER=?";
          try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);             
             ps.setInt(1, per.getCodigo());
@@ -77,7 +77,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
     public List listarTodos() throws Exception {
         List<PersonaM> listado = null;
         PersonaM pers;
-        String sql = "select * from PERSONA";
+        String sql = "select * from PERSONAL";
         try {
             listado = new ArrayList();
             Statement st = this.conectar().createStatement();

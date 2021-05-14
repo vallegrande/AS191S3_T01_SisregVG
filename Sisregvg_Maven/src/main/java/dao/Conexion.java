@@ -2,51 +2,42 @@ package dao;
 
 import java.io.InputStream;
 import java.sql.Connection;
-import java.util.Properties;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 public class Conexion {
 
-    private static Connection cnx = null;
+    public static Connection cnx = null;
 
     public static Connection conectar() throws Exception {
 
-        InputStream input = Conexion.class.getClassLoader().getResourceAsStream("properties/db.properties");
-        Properties properties = new Properties();
-        properties.load(input);
-        String driver = properties.getProperty("driver");
-        String url = properties.getProperty("url");
-        String user = properties.getProperty("user");
-        String pwd = properties.getProperty("pwd");
+       
         try {
-            Class.forName(driver);
-            cnx = DriverManager.getConnection(url,user,pwd);
+            String user = "sisregvg";
+            String pwd = "registrodegastos2021-";
+            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            String url = "jdbc:sqlserver://dbsisregvg.database.windows.net:1433;databaseName=dbsisregvg";
+            Class.forName(driver).newInstance();
+            cnx = DriverManager.getConnection(url, user, pwd);
         } catch (Exception e) {
-            System.out.println("Error de conexión: " + e.getMessage() + e.getStackTrace());
+            JOptionPane.showMessageDialog(null, "Error de conexión, revisar");
+            System.out.println("error de conexion " + e.getMessage());
         }
         return cnx;
     }
 
-    public static Connection getCnx() {
-        return cnx;
-    }
-
-    public static void setCnx(Connection aCnx) {
-        cnx = aCnx;
-    }
-    
-    public void cerrar() throws Exception{
-        if(cnx !=null){
+    public void cerrar() throws Exception {
+        if (cnx != null) {
             cnx.close();
         }
     }
-    
-   public static void main(String[] args) throws Exception{
-        Conexion.conectar();
-        if (Conexion.cnx != null) {
-            System.out.println("CONECTADO");
+
+    public static void main(String[] args) throws Exception {
+        conectar();
+        if (cnx != null) {
+            System.out.println("Estoy conectado");
         } else {
-            System.out.println("SIN CONEXIÓN REVISA...");
+            System.out.println("Algo anda mal, revisar");
         }
     }
 }

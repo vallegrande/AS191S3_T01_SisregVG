@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <h:head>
+        <title>Listado de Documentos </title>
+        <f:event listener="#{DocumentosC.listar()}" type="preRenderView" />
+    </h:head>
+    <h:body>      
+
+        <p:growl id="mensaje" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+        <h:form id="form">
+
+            <!--    Formulario del personal    >-->         
+            <p:panelGrid columns="2">
+                <f:facet name= "header"> DATOS DE DOCUMENTOS </f:facet> 
+                <p:outputLabel value="Importe" />
+                <p:inputText id="Txtnombre" value="#{DocumentosC.documento.importe}" maxlength="5">
+                    <p:keyFilter regEx="/[0-9_.]/" />
+                </p:inputText>
+               
+                  <h:outputText value="Fecha"/>
+                <h:outputText value="#{DocumentosC.documento.fecha}">
+                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                </h:outputText>      
+                <p:outputLabel value="Asunto" /> <p:inputText value="#{DocumentosC.documento.asunto}" maxlength="100" >
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                </p:inputText>                             
+                <p:commandButton value="Registrar" actionListener="#{DocumentosC.registrar()}" update="tablaPer mensaje"/>
+                <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
+
+               
+                <h:commandLink>
+                     <h:graphicImage width="50px" url="./../recursos/pdf.png"/>
+                     <p:dataExporter type='pdf' target="tablaPer" fileName="cars" pageOnly="true" />              
+                </h:commandLink>            
+                    <h:commandLink>
+                     <h:graphicImage width="50px" url="./../recursos/xls.png"/>
+                     <p:dataExporter type="xls" target="tablaPer" fileName="exceltablaPer" pageOnly="true"   />              
+                </h:commandLink>  
+                
+
+    </p:panelGrid>
+
+    <!--    Formulario del personal   >-->
+
+    <!--              Listado del personal-->
+    <p:dataTable var="tblpers" id="tablaPer" value="#{DocumentosC.listadoDocumentos}" rows="10" 
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="5,10,{ShowAll|'All'}" 
+                 rowStyleClass="registroVinculado">
+        <f:facet name= "header"> LISTADO DE DOCUMENTOS REGISTRADO </f:facet> 
+        <p:column style="width:10px" headerText="Id">
+            <h:outputText value="#{tblpers.codigo}"/>
+        </p:column>
+        <p:column style="width:80px" headerText="Importe">
+            <h:outputText value="#{tblpers.importe}" />
+        </p:column>
+        <p:column style="width:110px" headerText="Fecha">
+            <h:outputText value="#{tblpers.fecha}" />
+        </p:column>
+        <p:column style="width:95px" headerText="Asunto">
+            <h:outputText value="#{tblpers.asunto}" />
+        </p:column>
+        
+        <p:column style="width:95px" headerText="Modificar" exportable="false">
+            <p:commandButton oncomplete="PF('wdlgDatos').show();" value="Modificar" update=":dlgDatos">
+                <f:setPropertyActionListener value="#{tblpers}" target="#{DocumentosC.documentos}" />
+            </p:commandButton>
+        </p:column>
+
+        <p:column style="width:95px" headerText="Eliminar" exportable="false">
+            <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{DocumentosC.eliminar(tblpers)}" update="tablaPer">
+                <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
+            </p:commandButton>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+            </p:confirmDialog>
+        </p:column>
+        <f:facet name="footer">
+            EN TOTAL HAY#{fn:length(DocumentosC.listadoDocumentos)} REGISTROS.
+        </f:facet>
+    </p:dataTable>
+    <!--            Listado de la persona-->
+</h:form>
+
+
+<!--DATOS DEL PERSONAL-->
+<p:dialog header="Datos del personal" widgetVar="wdlgDatos" id="dlgDatos">
+    <h:form>
+        <p:panelGrid columns="2">
+          <p:outputLabel value="Importe" />
+                <p:inputText id="Txtnombre" value="#{DocumentosC.documento.importe}" maxlength="5">
+                    <p:keyFilter regEx="/[0-9_.]/" />
+                </p:inputText>
+               
+                  <h:outputText value="Fecha"/>
+                <h:outputText value="#{DocumentosC.documento.fecha}">
+                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                </h:outputText>      
+                <p:outputLabel value="Asunto" /> <p:inputText value="#{DocumentosC.documento.asunto}" maxlength="100" >
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                </p:inputText>                   
+        
+            <p:commandButton value="Modificar" actionListener="#{DocumentosC.modificar()}" 
+                             update=":form:tablaPer" oncomplete="PF('wdlgDatos').hide();" >
+                <p:confirm header="Confirmación" message="¿Deseas Modificar?" icon="ui-icon-alert"/>
+                <p:tooltip trackMouse="true"/>
+            </p:commandButton>
+            <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" />
+
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+            </p:confirmDialog>
+        </p:panelGrid>
+    </h:form>
+</p:dialog>
+</h:body>
+</html>
