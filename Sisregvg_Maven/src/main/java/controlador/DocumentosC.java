@@ -1,13 +1,13 @@
 package controlador;
 
-import dao.DocumentosD;
+import dao.DocumentosImpl;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import modelo.DocumentosM;
+import modelo.Documentos;
 
 //Notación CDI
 @Named(value = "DocumentosC")
@@ -15,13 +15,13 @@ import modelo.DocumentosM;
 @SessionScoped
 public class DocumentosC implements Serializable {
 
-    private DocumentosM documento;
-    private DocumentosD dao;
-    private List<DocumentosM> listadoDocumentos;
+    private Documentos documento;
+    private DocumentosImpl dao;
+    private List<Documentos> listadoDocumentos;
 
     public DocumentosC() {
-        documento = new DocumentosM();
-        dao = new DocumentosD();
+        documento = new Documentos();
+        dao = new DocumentosImpl();
     }
 
     public void registrar() throws Exception {
@@ -46,7 +46,7 @@ public class DocumentosC implements Serializable {
         }
     }
 
-    public void eliminar(DocumentosM documento) throws Exception {
+    public void eliminar(Documentos documento) throws Exception {
         try {
             dao.eliminar(documento);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "OK", "Eliminado con éxito"));
@@ -80,7 +80,7 @@ public class DocumentosC implements Serializable {
 //    }
     
     public void limpiar() {
-        documento = new DocumentosM();
+        documento = new Documentos();
     }
 
     public void listar() {
@@ -92,27 +92,27 @@ public class DocumentosC implements Serializable {
     }
 //metodos generados
 
-    public DocumentosM getDocumento() {
+    public Documentos getDocumento() {
         return documento;
     }
 
-    public void setDocumento(DocumentosM documento) {
+    public void setDocumento(Documentos documento) {
         this.documento = documento;
     }
 
-    public DocumentosD getDao() {
+    public DocumentosImpl getDao() {
         return dao;
     }
 
-    public void setDao(DocumentosD dao) {
+    public void setDao(DocumentosImpl dao) {
         this.dao = dao;
     }
 
-    public List<DocumentosM> getListadoDocumentos() {
+    public List<Documentos> getListadoDocumentos() {
         return listadoDocumentos;
     }
 
-    public void setListadoDocumentos(List<DocumentosM> listadoDocumentos) {
+    public void setListadoDocumentos(List<Documentos> listadoDocumentos) {
         this.listadoDocumentos = listadoDocumentos;
     }
 

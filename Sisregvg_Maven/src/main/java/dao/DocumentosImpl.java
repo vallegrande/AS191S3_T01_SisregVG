@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.DocumentosM;
+import modelo.Documentos;
 
 
-public class DocumentosD extends Conexion implements ICRUD<DocumentosM> {
+public class DocumentosImpl extends Conexion implements ICRUD<Documentos> {
 
     @Override
-    public void registrar(DocumentosM documento) throws Exception {
+    public void registrar(Documentos documento) throws Exception {
     
         String sql = "insert into DOCUMENTOS (IMPODOC,FECDOC,ASUDOC,ESTDOC) values (?,?,?,?)";
         try {
@@ -35,7 +35,7 @@ public class DocumentosD extends Conexion implements ICRUD<DocumentosM> {
     }
 
     @Override
-    public void modificar(DocumentosM documento) throws Exception {
+    public void modificar(Documentos documento) throws Exception {
         String sql = "update DOCUMENTOS set IMPDOC=?, FECDOC=?,ASUDOC=?,ESTDOC=? where IDDOC=? ";
         try {
          PreparedStatement ps = this.conectar().prepareStatement(sql); 
@@ -55,7 +55,7 @@ public class DocumentosD extends Conexion implements ICRUD<DocumentosM> {
     }
 
     @Override
-    public void eliminar(DocumentosM documento) throws Exception {
+    public void eliminar(Documentos documento) throws Exception {
         String sql = "delete from DOCUMENTOS where IDDOC=?";
          try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);             
@@ -72,15 +72,15 @@ public class DocumentosD extends Conexion implements ICRUD<DocumentosM> {
 
     @Override
     public List listarTodos() throws Exception {
-        List<DocumentosM> listado = null;
-        DocumentosM documento;
-        String sql = "select * from DOCUMENTOS";
+        List<Documentos> listado = null;
+        Documentos documento;
+        String sql = "select * from DOCUMENTOS order by IDDOC desc";
         try {
             listado = new ArrayList();
             Statement st = this.conectar().createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                documento = new DocumentosM();
+                documento = new Documentos();
                 documento.setId(rs.getInt("IDDOC"));
                 documento.setImporte(rs.getDouble("IMPDOC"));
                 documento.setFecha(rs.getDate("FECDOC"));

@@ -26,7 +26,7 @@ public class DeJuradaImpl extends Conexion implements ICRUD<DeJurada> {
             ps.setString(5, declaracion.getGastado());
             ps.setString(6, declaracion.getMotivo());
             ps.setDate(7, declaracion.getFecha());
-            ps.setInt(8, declaracion.getIdper());
+            ps.setString(8, declaracion.getIdper());
            ps.setString(9, "A");
             ps.executeUpdate();
             ps.close();
@@ -49,7 +49,7 @@ public class DeJuradaImpl extends Conexion implements ICRUD<DeJurada> {
             ps.setString(5, declaracion.getGastado());
             ps.setString(6, declaracion.getMotivo());
             ps.setDate(7, declaracion.getFecha());
-            ps.setInt(8, declaracion.getIdper());
+            ps.setString(8, declaracion.getIdper());
             ps.setString(9, "A");
             ps.setInt(10, declaracion.getId());
             ps.executeUpdate();
@@ -78,8 +78,8 @@ public class DeJuradaImpl extends Conexion implements ICRUD<DeJurada> {
     public List listarTodos() throws Exception {
         List<DeJurada> listadoDec = null;
         DeJurada declaracion;
-        String sql = "select * from DeclaracionJurada";
-        try {
+        String sql = "select * from DeclaracionJurada order by IDDEC desc";
+        try {          
             listadoDec = new ArrayList();
             Statement st = this.conectar().createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -93,7 +93,7 @@ public class DeJuradaImpl extends Conexion implements ICRUD<DeJurada> {
                 declaracion.setGastado(rs.getString("GASDEC"));
                 declaracion.setMotivo(rs.getString("MOTDEC"));
                 declaracion.setFecha(rs.getDate("FECDEC"));
-                declaracion.setIdper(rs.getInt("IDPER"));
+                declaracion.setIdper(rs.getString("IDPER"));
                 listadoDec.add(declaracion);
             }
             rs.close();
@@ -107,4 +107,39 @@ public class DeJuradaImpl extends Conexion implements ICRUD<DeJurada> {
         return listadoDec;
     }
 
+    
+    
+    
+        public List<String> autocompleteIdper(String consulta) throws SQLException, Exception {
+        List<String> lista = new ArrayList<>();
+        String sql = "select top 30 concat(nomper, ', ', apeper, ', ',dniper, ', ',celper, ', ',emaper, ', ',carper) AS PERSONALDESC from PERSONAL WHERE nomper LIKE ?";
+        try {
+            PreparedStatement ps = this.conectar().prepareCall(sql);
+            ps.setString(1, "%" + consulta + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                lista.add(rs.getString("PERSONALDESC"));
+            }
+        } catch (Exception e) {
+            System.out.println("Error en autocompleteIdper" + e.getMessage());
+        }
+        return lista;
+    }
+
+    public String obtenerIdper(String cadenaPersonal) throws SQLException, Exception {
+        String sql = "select idper FROM PERSONAL WHERE concat(nomper, ', ', apeper, ', ',dniper, ', ',celper, ', ',emaper, ', ',carper) = ?";
+        try {
+            PreparedStatement ps = this.conectar().prepareCall(sql);
+            ps.setString(1, cadenaPersonal);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getString("idper");
+            }
+            return rs.getString("idper");
+        } catch (Exception e) {
+            System.out.println("Error en obtenerIdper " + e.getMessage());
+            throw e;
+        }
+    }
+    
 }

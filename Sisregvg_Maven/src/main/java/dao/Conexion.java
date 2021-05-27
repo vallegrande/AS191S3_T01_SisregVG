@@ -11,12 +11,15 @@ public class Conexion {
 
     public static Connection conectar() throws Exception {
 
-       
         try {
-            String user = "sisregvg";
-            String pwd = "registrodegastos2021-";
+//            String user = "sisregvg";
+//            String pwd = "registrodegastos2021-";
+//            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//            String url = "jdbc:sqlserver://dbsisregvg.database.windows.net:1433;databaseName=dbsisregvg";
+            String user = "sa";
+            String pwd = "12345";
             String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            String url = "jdbc:sqlserver://dbsisregvg.database.windows.net:1433;databaseName=dbsisregvg";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=dbsisregvg";
             Class.forName(driver).newInstance();
             cnx = DriverManager.getConnection(url, user, pwd);
         } catch (Exception e) {

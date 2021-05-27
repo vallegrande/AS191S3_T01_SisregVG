@@ -33,12 +33,18 @@
                 </p:inputText>
                 <p:outputLabel value="Centrodecosto" /> 
                 <p:inputText value="#{DeJuradaC.declaracion.centrodecosto}" maxlength="10" >
-                   <p:keyFilter regEx="/[0-9_.]/"/>
+                    <p:keyFilter regEx="/[0-9_.]/"/>
                 </p:inputText>                  
-                <p:outputLabel value="Idper" />
-                <p:inputText value="#{DeJuradaC.declaracion.idper}" maxlength="2">
-                    <p:keyFilter regEx="/[0-9]/"/>
-                </p:inputText>
+                <p:outputLabel value="Personal" />
+                <p:autoComplete value="#{DeJuradaC.declaracion.idper}" completeMethod="#{DeJuradaC.completeTextPersonal}"
+                                inputStyle="width: 160%;" minQueryLength="2">
+                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                </p:autoComplete>
+
+                <!--                <p:outputLabel value="Idper" />
+                                <p:inputText value="#{DeJuradaC.declaracion.idper}" maxlength="2">
+                                    <p:keyFilter regEx="/[0-9]/"/>
+                                </p:inputText>-->
                 <p:outputLabel value="Domicilio" /> 
                 <p:inputText value="#{DeJuradaC.declaracion.domicilio}" maxlength="80" >
                     <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_@_._-_ ]/"/>
@@ -56,17 +62,14 @@
                 <p:commandButton value="Registrar" actionListener="#{DeJuradaC.registrar()}" update="tablaDec mensaje"/>
                 <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
 
-
                 <h:commandLink>
                     <h:graphicImage width="50px" url="./../recursos/pdf.png"/>
                     <p:dataExporter type='pdf' target="tablaDec" fileName="cars" pageOnly="true" />              
-                </h:commandLink>
-
-
+                </h:commandLink>            
                 <h:commandLink>
                     <h:graphicImage width="50px" url="./../recursos/xls.png"/>
                     <p:dataExporter type="xls" target="tablaDec" fileName="exceltablaPer" pageOnly="true"   />              
-                </h:commandLink>             
+                </h:commandLink>                
             </p:panelGrid>
 
             <!--    Formulario del personal   >-->
@@ -83,9 +86,9 @@
                 <!--        <p:column style="width:10px" headerText="Id">
                             <h:outputText value="#{tblpers.codigo}"/>
                         </p:column>-->
-<!--                <p:column style="width:50px" headerText="Id">
-                    <h:outputText value="#{tbldec.id}"/>
-                </p:column>-->
+                <!--                <p:column style="width:50px" headerText="Id">
+                                    <h:outputText value="#{tbldec.id}"/>
+                                </p:column>-->
                 <p:column style="width:80px" headerText="Importe">
                     <h:outputText value="#{tbldec.importe}" />
                 </p:column>
@@ -110,9 +113,9 @@
                 <p:column style="width:75px" headerText="Fecha">
                     <h:outputText value="#{tbldec.fecha}" />
                 </p:column>             
-<!--                <p:column style="width:60px" headerText="Estado">
-                    <h:outputText value="#{tbldec.estado}" />
-                </p:column>-->
+                <!--                <p:column style="width:60px" headerText="Estado">
+                                    <h:outputText value="#{tbldec.estado}" />
+                                </p:column>-->
 
                 <p:column style="width:95px" headerText="Modificar" exportable="false">
                     <p:commandButton oncomplete="PF('wdlgDatos').show();" value="Modificar" update=":dlgDatos">
@@ -120,15 +123,15 @@
                     </p:commandButton>
                 </p:column>
 
-                        <p:column style="width:95px" headerText="Eliminar" exportable="false">
-                            <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{personaC.eliminar(tblpers)}" update="tablaPer">
-                                <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
-                            </p:commandButton>
-                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                            </p:confirmDialog>
-                        </p:column>
+                <p:column style="width:95px" headerText="Eliminar" exportable="false">
+                    <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{personaC.eliminar(tblpers)}" update="tablaPer">
+                        <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
+                    </p:commandButton>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                    </p:confirmDialog>
+                </p:column>
                 <f:facet name="footer">
                     EN TOTAL HAY#{fn:length(DeJuradaC.listadoDec)} REGISTROS.
                 </f:facet>
@@ -142,38 +145,43 @@
             <h:form>
                 <p:panelGrid columns="2">
 
-                     <p:outputLabel value="Importe" />
-                <p:inputText value="#{DeJuradaC.declaracion.importe}" maxlength="6">
-                    <p:keyFilter regEx="/[0-9_.]/"/>
-                </p:inputText>
-                <p:outputLabel value="Proyecto" />
-                <p:inputText value="#{DeJuradaC.declaracion.proyecto}" maxlength="30">
-                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
-                </p:inputText>
-                <p:outputLabel value="Centrodecosto" /> 
-                <p:inputText value="#{DeJuradaC.declaracion.centrodecosto}" maxlength="10" >
-                     <p:keyFilter regEx="/[0-9_.]/"/>
-                </p:inputText>                  
-                <p:outputLabel value="Idper" />
-                <p:inputText value="#{DeJuradaC.declaracion.idper}" maxlength="2">
-                    <p:keyFilter regEx="/[0-9]/"/>
-                </p:inputText>
-                <p:outputLabel value="Domicilio" /> 
-                <p:inputText value="#{DeJuradaC.declaracion.domicilio}" maxlength="80" >
-                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_@_._-_ ]/"/>
-                </p:inputText>  
-                <p:outputLabel value="Gastado" />
-                <p:inputText value="#{DeJuradaC.declaracion.gastado}" maxlength="6">
-                    <p:keyFilter regEx="/[0-9_.]/"/>
-                </p:inputText>
-                <p:outputLabel value="Motivo" />
-                <p:inputText value="#{DeJuradaC.declaracion.motivo}" maxlength="50">
-                    <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_@_._-_ ]/"/>
-                </p:inputText>
-                <p:outputLabel value="Fecha" /> 
-                <p:calendar value="#{DeJuradaC.declaracion.fecha}" pattern="dd-MM-yyyy" mask="true" mindate="@now"/>                         
-                <p:commandButton value="Registrar" actionListener="#{DeJuradaC.registrar()}" update="tablaDec mensaje"/>
-                <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
+                    <p:outputLabel value="Importe" />
+                    <p:inputText value="#{DeJuradaC.declaracion.importe}" maxlength="6">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                    </p:inputText>
+                    <p:outputLabel value="Proyecto" />
+                    <p:inputText value="#{DeJuradaC.declaracion.proyecto}" maxlength="30">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                    </p:inputText>
+                    <p:outputLabel value="Centrodecosto" /> 
+                    <p:inputText value="#{DeJuradaC.declaracion.centrodecosto}" maxlength="10" >
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                    </p:inputText>                  
+                    <p:outputLabel value="Personal" />
+                    <p:autoComplete value="#{DeJuradaC.declaracion.idper}" completeMethod="#{DeJuradaC.completeTextPersonal}"
+                                    inputStyle="width: 160%;" minQueryLength="2">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                    </p:autoComplete>
+                    <!--                    <p:outputLabel value="Idper" />
+                                        <p:inputText value="#{DeJuradaC.declaracion.idper}" maxlength="2">
+                                            <p:keyFilter regEx="/[0-9]/"/>
+                                        </p:inputText>-->
+                    <p:outputLabel value="Domicilio" /> 
+                    <p:inputText value="#{DeJuradaC.declaracion.domicilio}" maxlength="80" >
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_@_._-_ ]/"/>
+                    </p:inputText>  
+                    <p:outputLabel value="Gastado" />
+                    <p:inputText value="#{DeJuradaC.declaracion.gastado}" maxlength="6">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                    </p:inputText>
+                    <p:outputLabel value="Motivo" />
+                    <p:inputText value="#{DeJuradaC.declaracion.motivo}" maxlength="50">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_@_._-_ ]/"/>
+                    </p:inputText>
+                    <p:outputLabel value="Fecha" /> 
+                    <p:calendar value="#{DeJuradaC.declaracion.fecha}" pattern="dd-MM-yyyy" mask="true" mindate="@now"/>                         
+                    <p:commandButton value="Registrar" actionListener="#{DeJuradaC.registrar()}" update="tablaDec mensaje"/>
+                    <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
 
 
                     <p:commandButton value="Modificar" actionListener="#{DeJuradaC.modificar()}" 

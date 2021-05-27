@@ -12,7 +12,7 @@ public class DeJurada {
     private String gastado;
     private String motivo;
     private Date fecha;
-    private int idper;
+    private String idper;
     private String estado;
 
     public int getId() {
@@ -79,11 +79,11 @@ public class DeJurada {
         this.fecha = fecha;
     }
 
-    public int getIdper() {
+    public String getIdper() {
         return idper;
     }
 
-    public void setIdper(int idper) {
+    public void setIdper(String idper) {
         this.idper = idper;
     }
 
@@ -96,5 +96,4 @@ public class DeJurada {
     }
 
 
-  
 }

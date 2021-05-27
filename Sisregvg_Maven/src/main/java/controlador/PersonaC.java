@@ -1,13 +1,13 @@
 package controlador;
 
-import dao.PersonaD;
+import dao.PersonaImpl;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import modelo.PersonaM;
+import modelo.Persona;
 
 //Notación CDI
 @Named(value = "personaC")
@@ -15,13 +15,13 @@ import modelo.PersonaM;
 @SessionScoped
 public class PersonaC implements Serializable {
 
-    private PersonaM per;
-    private PersonaD dao;
-    private List<PersonaM> listadoPer;
+    private Persona per;
+    private PersonaImpl dao;
+    private List<Persona> listadoPer;
 
     public PersonaC() {
-        per = new PersonaM();
-        dao = new PersonaD();
+        per = new Persona();
+        dao = new PersonaImpl();
     }
 
     public void registrar() throws Exception {
@@ -46,7 +46,7 @@ public class PersonaC implements Serializable {
         }
     }
 
-    public void eliminar(PersonaM pers) throws Exception {
+    public void eliminar(Persona pers) throws Exception {
         try {
             dao.eliminar(pers);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "OK", "Eliminado con éxito"));
@@ -57,7 +57,7 @@ public class PersonaC implements Serializable {
         }
     }
 
-//       public void eliminarEstado(PersonaM clie) throws Exception{
+//       public void eliminarEstado(Persona clie) throws Exception{
 //        try {            
 //            dao.EliminarEstado(clie);
 //            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "OK", "Eliminado con éxito"));
@@ -68,7 +68,7 @@ public class PersonaC implements Serializable {
 //        }
 //    }
 //    
-//    public void restaurarEstado(PersonaM clie) throws Exception{
+//    public void restaurarEstado(Persona clie) throws Exception{
 //        try {            
 //            dao.RestaurarEstado(clie);
 //            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Restaurado con Exito"));
@@ -80,7 +80,7 @@ public class PersonaC implements Serializable {
 //    }
     
     public void limpiar() {
-        per = new PersonaM();
+        per = new Persona();
     }
 
     public void listar() {
@@ -92,27 +92,27 @@ public class PersonaC implements Serializable {
     }
 //metodos generados
 
-    public PersonaM getPer() {
+    public Persona getPer() {
         return per;
     }
 
-    public void setPer(PersonaM per) {
+    public void setPer(Persona per) {
         this.per = per;
     }
 
-    public PersonaD getDao() {
+    public PersonaImpl getDao() {
         return dao;
     }
 
-    public void setDao(PersonaD dao) {
+    public void setDao(PersonaImpl dao) {
         this.dao = dao;
     }
 
-    public List<PersonaM> getListadoPer() {
+    public List<Persona> getListadoPer() {
         return listadoPer;
     }
 
-    public void setListadoPer(List<PersonaM> listadoPer) {
+    public void setListadoPer(List<Persona> listadoPer) {
         this.listadoPer = listadoPer;
     }   
 

@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Date;
 
-public class DocumentosM {
+public class Documentos {
     
     private int id;
     private Double importe;

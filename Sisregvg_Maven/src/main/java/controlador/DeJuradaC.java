@@ -5,6 +5,7 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import java.sql.SQLException;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import modelo.DeJurada;
@@ -26,6 +27,7 @@ public class DeJuradaC implements Serializable {
 
     public void registrar() throws Exception {
         try {
+            declaracion.setIdper(dao.obtenerIdper(declaracion.getIdper()));
             dao.registrar(declaracion);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Registrado con Exito"));
             limpiar();
@@ -57,6 +59,16 @@ public class DeJuradaC implements Serializable {
         }
     }
 
+     public List<String> completeTextPersonal(String query) throws SQLException, Exception {
+        DeJuradaImpl daoPersonal = new DeJuradaImpl();
+        return daoPersonal.autocompleteIdper(query);
+    }    
+
+    
+    
+    
+    
+    
 //       public void eliminarEstado(PersonaM clie) throws Exception{
 //        try {            
 //            dao.EliminarEstado(clie);

@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.PersonaM;
+import modelo.Persona;
 
 
-public class PersonaD extends Conexion implements ICRUD<PersonaM> {
+public class PersonaImpl extends Conexion implements ICRUD<Persona> {
 
     @Override
-    public void registrar(PersonaM per) throws Exception {
+    public void registrar(Persona per) throws Exception {
     
         String sql = "insert into PERSONAL (NOMPER,APEPER,DNIPER,CELPER,EMAPER,SEXPER,CARPER) values (?,?,?,?,?,?,?)";
         try {
@@ -38,7 +38,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
     }
 
     @Override
-    public void modificar(PersonaM per) throws Exception {
+    public void modificar(Persona per) throws Exception {
         String sql = "update PERSONAL set NOMPER=?, APEPER=?,DNIPER=?,CELPER=?,EMAPER=?,SEXPER=?,CARPER=? where CODPER=? ";
         try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);
@@ -58,7 +58,7 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
     }
 
     @Override
-    public void eliminar(PersonaM per) throws Exception {
+    public void eliminar(Persona per) throws Exception {
         String sql = "delete from PERSONAL where CODPER=?";
          try {
             PreparedStatement ps = this.conectar().prepareStatement(sql);             
@@ -75,15 +75,15 @@ public class PersonaD extends Conexion implements ICRUD<PersonaM> {
 
     @Override
     public List listarTodos() throws Exception {
-        List<PersonaM> listado = null;
-        PersonaM pers;
-        String sql = "select * from PERSONAL";
+        List<Persona> listado = null;
+        Persona pers;
+        String sql = "select * from PERSONAL order by CODPER desc";
         try {
             listado = new ArrayList();
             Statement st = this.conectar().createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                pers = new PersonaM();
+                pers = new Persona();
                 pers.setCodigo(rs.getInt("CODPER"));
                 pers.setNombre(rs.getString("NOMPER"));
                 pers.setApellido(rs.getString("APEPER"));

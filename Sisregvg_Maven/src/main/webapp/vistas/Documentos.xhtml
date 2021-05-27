@@ -37,8 +37,7 @@
                 <p:commandButton value="Registrar" actionListener="#{DocumentosC.registrar()}" update="tablaPer mensaje"/>
                 <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
 
-               
-                <h:commandLink>
+                   <h:commandLink>
                      <h:graphicImage width="50px" url="./../recursos/pdf.png"/>
                      <p:dataExporter type='pdf' target="tablaPer" fileName="cars" pageOnly="true" />              
                 </h:commandLink>            

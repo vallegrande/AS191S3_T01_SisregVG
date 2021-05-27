@@ -54,13 +54,13 @@
 
                 <h:commandLink>
                     <h:graphicImage width="50px" url="./../recursos/pdf.png"/>
-                    <p:dataExporter type='pdf' target="tablaPer" fileName="cars" pageOnly="true" />              
+                    <p:dataExporter type='pdf' target="tablaPer" fileName="tblpers" pageOnly="false" />              
                 </h:commandLink>
 
 
                 <h:commandLink>
                     <h:graphicImage width="50px" url="./../recursos/xls.png"/>
-                    <p:dataExporter type="xls" target="tablaPer" fileName="exceltablaPer" pageOnly="true"   />              
+                    <p:dataExporter type="xls" target="tablaPer" fileName="tblpers" pageOnly="false"   />              
                 </h:commandLink>             
             </p:panelGrid>
 
@@ -106,16 +106,15 @@
                         <f:setPropertyActionListener value="#{tblpers}" target="#{personaC.per}" />
                     </p:commandButton>
                 </p:column>
-
-                <p:column style="width:95px" headerText="Eliminar" exportable="false">
-                    <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{personaC.eliminar(tblpers)}" update="tablaPer">
-                        <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
-                    </p:commandButton>
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-                    </p:confirmDialog>
-                </p:column>
+                        <p:column style="width:95px" headerText="Eliminar" exportable="false">
+                            <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{personaC.eliminar(tblpers)}" update="tablaPer">
+                                <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
+                            </p:commandButton>
+                            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                            </p:confirmDialog>
+                        </p:column>
                 <f:facet name="footer">
                     EN TOTAL HAY#{fn:length(personaC.listadoPer)} REGISTROS.
                 </f:facet>
@@ -160,18 +159,10 @@
                         <p:tooltip trackMouse="true"/>
                     </p:commandButton>
                     <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" />
-
-
-                    <h:form>
+                    
+                     <h:form>
                         <p:growl id="messages" showDetail="true"/>
-                        <p:contextMenu>
-                            <p:menuitem value="Eliminar" icon="pi pi-trash" actionListener="#{clienteC.eliminarEstado(tblcli)}" ajax="false" update=":form:tablaCli">
-                                <p:confirm header="Confirmación" message="¿Deseas eliminar?"/>
-                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
-                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
-                                </p:confirmDialog>
-                            </p:menuitem>
+                        <p:contextMenu>                         
                             <p:menuitem value="Save" action="#{DeJuradaC.registrar()}" update="messages" icon="pi pi-save"/>
                             <p:menuitem value="Update" action="#{DeJuradaC.modificar()}" update="messages" icon="pi pi-refresh"/>
                             <p:menuitem value="Delete" action="#{DeJuradaC.eliminar(tblpers)}" ajax="false" icon="pi pi-times"/>
