@@ -128,5 +128,9 @@ public class DeJuradaC implements Serializable {
         this.listadoDec = listadoDec;
     }
 
+    
+    
+    
+    
 
 }
