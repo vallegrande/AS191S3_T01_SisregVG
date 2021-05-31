@@ -41,6 +41,10 @@ public class Conexion {
             System.out.println("Estoy conectado");
         } else {
             System.out.println("Algo anda mal, revisar");
+
         }
+        
     }
+    
+
 }
