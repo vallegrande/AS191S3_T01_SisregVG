@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title> Mi Menú </title>
+
+<!--        <f:event listener="#{personaC.listar()}" type="preRenderView" />-->
+    </h:head>
+    <h:body>      
+
+        <p:growl id="mensaje" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+<!--                <h:form>
+                    <p:breadCrumb>
+                        <p:menuitem value="Categories" url="2" />
+                        <p:menuitem value="Personal" url="http://localhost:8080/Sisregvg/faces/vistas/Personal.xhtml" />        
+                        <p:menuitem value="Documentos" url="http://localhost:8080/Sisregvg/faces/vistas/Documentos.xhtml" />        
+                        <p:menuitem value="DeJurada" url="http://localhost:8080/Sisregvg/faces/vistas/DeJurada.xhtml" />    
+                    </p:breadCrumb>
+                </h:form>-->
+
+        <!--        Formulario del Menú>-->
+        <h:form>
+            <p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+                <h1 style="font-weight:normal"> Menu</h1>
+
+                <p:panelMenu style="width:300px">
+                    <p:submenu label="Personal">
+                        <p:menuitem value="Registrar Personal" outcome="/vistas/Personal"/>                                          
+                    </p:submenu>           
+                    <p:submenu label="Documentos">                                       
+                        <p:menuitem value="Registrar Documentos" outcome="/vistas/Documentos"/>     
+                    </p:submenu>     
+                    <p:submenu label="Declaración Jurada">   
+                        <p:menuitem value="Registrar Declaración Jurada" outcome="/vistas/DeJurada"/>  
+                    </p:submenu>     
+                    <p:submenu label="Reembolso">   
+                        <p:menuitem value="Registrar Reembolso" outcome="/vistas/Reembolso"/>  
+                    </p:submenu>    
+                    <p:submenu label="ValeProvisional">   
+                        <p:menuitem value="Registrar Vale Provisional" outcome="/vistas/ValeProvisional"/>  
+                    </p:submenu>   
+                </p:panelMenu>
+                <p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
+            </p:sidebar>                
+            <p:commandButton icon="pi pi-arrow-right" oncomplete="PF('sidebar1').show()" />
+        </h:form>
+    </h:body>
+</html>

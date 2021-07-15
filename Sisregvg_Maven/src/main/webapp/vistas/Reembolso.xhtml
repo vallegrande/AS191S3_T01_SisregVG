@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <h:head>
+        <title>Listado de Documentos </title>
+        <f:event listener="#{ReembolsoC.listar()}" type="preRenderView" />
+    </h:head>
+    <h:body>      
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+
+<!--        <h:form>
+            <p:breadCrumb>         
+                <p:menuitem icon="pi pi-home" value="Categories" url="http://localhost:8080/Sisregvg/faces/vistas/Menu.xhtml" />
+                <p:menuitem value="Menú" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/Menu.xhtml" />
+                <p:menuitem value="Personal" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/Personal.xhtml" />
+                <p:menuitem value="Documentos" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/Documentos.xhtml" />
+                <p:menuitem value="DeJurada" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/DeJurada.xhtml" />                 
+                <p:menuitem value="Vale Provisional" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/ValeProvisional.xhtml" />  
+            </p:breadCrumb>  
+        </h:form>-->
+
+        <h:form >
+            <p:panelMenu style="width:250px">
+                <p:submenu label="Sisregvg" >            
+                    <p:menuitem value="Documentos" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/Documentos.xhtml" />
+                    <p:menuitem value="DeJurada" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/DeJurada.xhtml" />    
+                    <p:menuitem value="Personal" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/Personal.xhtml" /> 
+                    <p:menuitem value="ValeProvisional" url="http://localhost:8080/Sisregvg_Maven/faces/vistas/ValeProvisional.xhtml" />
+                </p:submenu>
+            </p:panelMenu>
+        </h:form>
+
+
+
+        <p:growl id="mensaje" showDetail="true" />
+        <p:growl id="growl-sticky" for="sticky-key" showDetail="true" sticky="true" />
+
+        <h:form id="form">
+            <center>
+                <!--    Formulario de  Reembolso    >-->         
+                <p:panelGrid columns="4">
+                    <f:facet name= "header"> DATOS DEL REEMBOLSO </f:facet>                    
+                    <p:outputLabel value="Personal"/>
+                    <p:autoComplete value="#{ReembolsoC.reembolso.nomper}" completeMethod="#{ReembolsoC.completeTextReembolso}"
+                                    inputStyle="width: 100%;" minQueryLength="2" required="true" requiredMessage="Comple el Personal">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                    </p:autoComplete>
+                    <p:outputLabel value="DNI" />
+                    <p:inputText value="#{ReembolsoC.reembolso.dni}" maxlength="8"   required="true" requiredMessage="Digitar el dni" placeholder="Digite el Dni">
+                        <p:keyFilter regEx="/[0-9]/" />
+                        <f:validateLength minimum="8"/>
+                    </p:inputText>                                             
+                    <p:outputLabel value="Motivo" /> 
+                    <p:inputText value="#{ReembolsoC.reembolso.motivo}" maxlength="400"  required="true" requiredMessage="Digitar el motivo">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_._-_ ]/"/>
+                    </p:inputText>             
+                    <p:outputLabel value="N°Liquidacion" />
+                    <p:inputText value="#{ReembolsoC.reembolso.nliquidacion}" maxlength="10" required="true" requiredMessage="Digitar el N° de Liquidación">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="10"/>
+                    </p:inputText>
+                    <p:outputLabel value="Forma De Reembolso" />
+                    <p:selectOneRadio id="forma" value="#{ReembolsoC.reembolso.forma}"  required="true" requiredMessage="Seleccionar la forma de pago">
+                        <f:selectItem itemLabel="Efectivo" itemValue="E" />
+                        <f:selectItem itemLabel="Cheque" itemValue="C" />
+                    </p:selectOneRadio>   
+
+                    <p:outputLabel value="Fecha"/>
+                    <p:calendar id="fecha" value="#{ReembolsoC.reembolso.fecha}"
+                                showOn="button" pattern="dd-MM-yyyy" mask="true" navigator="true" maxdate="@now"
+                                size="20" required="true" requiredMessage="Ingrese la fecha" >
+                    </p:calendar>
+
+                    <p:outputLabel value="Area" />
+                    <p:inputText value="#{ReembolsoC.reembolso.area}" maxlength="10" required="true" requiredMessage="Digitar el area">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="10"/>
+                    </p:inputText>
+
+                        <p:outputLabel value="Centro de Costo" />
+                        <p:selectOneMenu style="width: 200px"  id="cendec" value="#{ReembolsoC.reembolso.area}" required="true" requiredMessage="Digitar el centro de costo">
+                            <f:selectItem itemLabel="Seleccionar" itemValue=""/>
+                            <f:selectItem itemLabel="ENERGIA ELECTRICA - PA" itemValue="100201"/>
+                            <f:selectItem itemLabel="RPM - PA" itemValue="100202"/>
+                            <f:selectItem itemLabel="SOFTWARE DE GESTION ACADEMICA Q10 - PA" itemValue="100203"/>
+                            <f:selectItem itemLabel="VISITAS DE ESTUDIOS(NT) - PA" itemValue="100204"/>
+                            <f:selectItem itemLabel="TERTÚLIAS PROFESIONALES(NT)- PA" itemValue="100205"/>
+                            <f:selectItem itemLabel="VISITAS TÉCNICAS(UD) - PA" itemValue="100206"/>
+                            <f:selectItem itemLabel=" MATERIALES E INSUMOS (UD) - PA" itemValue=" 100207"/>
+                            <f:selectItem itemLabel="MONITOREO Y EVALUACIÓN DE PRACTICAS - PA " itemValue="100208"/>
+                            <f:selectItem itemLabel="CAPACITACION DE MONITORES - PA" itemValue="100209"/>
+                            <f:selectItem itemLabel="SERCICIOS DE ACREDITACIÓN - PA" itemValue="100210"/>
+                            <f:selectItem itemLabel="COMPRA DE LIBROS DE INGLES - PA " itemValue="100211"/>
+                            <f:selectItem itemLabel="GASTOS DE VIAJE DE ESTUDIO (NT) - PA" itemValue="100212"/>
+                            <f:selectItem itemLabel="CICLO CERO PRODUCCIÓN AGRARIA -  PA" itemValue="100213"/>
+                            <f:selectItem itemLabel="GASTIS DE BECARUIS DE ENORESAS - PA " itemValue="100214"/>
+                            <f:selectItem itemLabel="  UNIFORMES - PA  " itemValue="100215"/>
+                            <f:selectItem itemLabel="ENERGIA ELÉCTRICA - AS" itemValue="200201"/>
+                            <f:selectItem itemLabel="RPM - AS" itemValue="200202"/>
+                            <f:selectItem itemLabel="SOFTWARE DE GESTIÓN ACADÉMICA Q10 - AS" itemValue="200203"/>
+                            <f:selectItem itemLabel="VISITAS DE ESTUDIOS(NT)- AS" itemValue="200204"/>
+                            <f:selectItem itemLabel="TERTÚLIAS PROFESIONALES (NT) - AS" itemValue="200205"/>
+                            <f:selectItem itemLabel=" CURSO CHARLA TÉCNICO(NT) - AS " itemValue="200206"/>
+                            <f:selectItem itemLabel=" MATERIALES E INSUMOS (UD) - AS " itemValue=" 200207"/>
+                            <f:selectItem itemLabel="MONITOREO Y EVALUACIÓN DE PRACTICAS - AS" itemValue="200208"/>
+                            <f:selectItem itemLabel="CAPACITACION DE MONITORES - AS" itemValue="200209"/>
+                            <f:selectItem itemLabel="SERCICIOS DE ACREDITACIÓN - AS" itemValue="200210"/>
+                            <f:selectItem itemLabel="COMPRA DE LIBROS DE INGLES - AS" itemValue="200211"/>
+                            <f:selectItem itemLabel="GASTOS DE VIAJE DE ESTUDIO (NT) - AS" itemValue="200212"/>
+                            <f:selectItem itemLabel="CICLO CERO ANÁLISIS DE SISTEMAS -  AS " itemValue="200213"/>
+                            <f:selectItem itemLabel="GÁSTOSS DE BECARIOS DE ENORESAS - AS" itemValue="200214"/>
+                            <f:selectItem itemLabel="UNIFORMES200204 - PA  " itemValue="100215"/>  
+                            <f:selectItem itemLabel="RECURSOS DIGITALES/BASE DE DATOS - AS" itemValue="200216"/>  
+                        </p:selectOneMenu>    
+
+                    <p:outputLabel value="Tipo de cuenta" />
+                    <p:selectOneRadio id="nahorroscorriente" value="#{ReembolsoC.reembolso.nahorroscorriente}"  required="true" requiredMessage="Seleccionar el area">
+                        <f:selectItem itemLabel="Ahorros" itemValue="A" />
+                        <f:selectItem itemLabel="Corriente" itemValue="C" />
+                    </p:selectOneRadio> 
+
+                    <p:outputLabel value="N° Cuenta" />
+                    <p:inputText value="#{ReembolsoC.reembolso.ncuenta}" maxlength="13"   required="true" requiredMessage="Digitar el N° de cuenta">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="13"/>
+                    </p:inputText>
+                    <p:commandButton value="Registrar" actionListener="#{ReembolsoC.registrar()}" update="form :formtwo:tablaRee mensaje" style="background-color:  background"/>
+                    <!--<p:commandButton value="Listar" actionListener="{personeroC.listar()}" update="tablaPer" />-->
+
+                    <h:commandLink>
+                        <h:graphicImage width="50px" url="./../recursos/pdf.png"/>
+                        <p:dataExporter type='pdf' target="tablaPer" fileName="cars" pageOnly="true" />              
+                    </h:commandLink>            
+                    <h:commandLink>
+                        <h:graphicImage width="50px" url="./../recursos/xls.png"/>
+                        <p:dataExporter type="xls" target="tablaPer" fileName="exceltablaPer" pageOnly="true"   />              
+                    </h:commandLink>  
+
+                </p:panelGrid>
+
+            </center>
+        </h:form>    
+
+
+
+        <h:form id="formtwo">
+
+            <!--    Formulario de Reembolso   >-->
+
+            <!--              Listado de  Reembolso-->
+            <p:dataTable var="tblree" id="tablaRee" value="#{ReembolsoC.listadoReembolso}" rows="10" 
+                         paginator="true" widgetVar="tblDeJurada" selection="#{ReembolsoC.reembolso}" 
+                         resizableColumns="true" 
+                         selectionMode="single"
+                         rowKey="#{tblree.id}"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="5,10,{ShowAll|'All'}" 
+                         rowStyleClass="registroVinculado">  
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Buscar:"/>
+                        <h:inputText id="globalFilter" onkeyup="PF('tblReembolsoO').filter()" style="width:200px"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <f:facet name= "header"> LISTADO DEL REEMBOLSO REGISTRADO </f:facet> 
+                <!--
+                                <p:column style="width:10px" headerText="Id"  sortBy="#{tblree.id}" filterBy="#{tblree.id}">
+                                    <h:outputText value="#{tblree.id}"/>
+                                </p:column>-->
+                <p:column style="width:80px" headerText="Personal"  sortBy="#{tblree.nomper}" filterBy="#{tblree.nomper}"> 
+                    <h:outputText value="#{tblree.nomper}" />
+                </p:column>
+                <p:column style="width:40px" headerText="Dni"  sortBy="#{tblree.dni}" filterBy="#{tblree.dni}">
+                    <h:outputText value="#{tblree.dni}" />
+                </p:column>
+                <p:column style="width:105px" headerText="Motivo"  sortBy="#{tblree.motivo}" filterBy="#{tblree.motivo}">
+                    <h:outputText value="#{tblree.motivo}" />
+                </p:column>
+                <p:column style="width:85px" headerText="N° Liquidación"  sortBy="#{tblree.nliquidacion}" filterBy="#{tblree.nliquidacion}">
+                    <h:outputText value="#{tblree.nliquidacion}" />
+                </p:column>
+                <p:column style="width:50px" headerText="Forma"  sortBy="#{tblree.forma}" filterBy="#{tblree.forma}">
+                    <h:outputText value="#{tblree.forma}" />
+                </p:column>
+                <p:column style="width:60px" headerText="Fecha" sortBy="#{tblree.fecha}" filterBy="#{tblree.fecha}">
+                    <h:outputText value="#{tblree.fecha}">
+                        <f:convertDateTime type="Date" pattern="dd-MMM-yyyy"/>
+                    </h:outputText>
+                </p:column>
+                <p:column style="width:60px" headerText="Area"  sortBy="#{tblree.area}" filterBy="#{tblree.area}">
+                    <h:outputText value="#{tblree.area}" />
+                </p:column>
+                <p:column style="width:90px" headerText="Centro de Costo"  sortBy="#{tblree.centrodecosto}" filterBy="#{tblree.centrodecosto}">
+                    <h:outputText value="#{tblree.centrodecosto}" />
+                </p:column>
+                <p:column style="width:60px" headerText="Tipo Cuenta"  sortBy="#{tblree.nahorroscorriente}" filterBy="#{tblree.nahorroscorriente}">
+                    <h:outputText value="#{tblree.nahorroscorriente}" />
+                </p:column>
+
+                <p:column style="width:90px" headerText="N° Cuenta"  sortBy="#{tblree.ncuenta}" filterBy="#{tblree.ncuenta}">
+                    <h:outputText value="#{tblree.ncuenta}" />
+                </p:column>
+
+                <!--                                <p:column style="width:95px" headerText="Modificar" exportable="false" >
+                                                    <p:commandButton oncomplete="PF('wdlgDatos').show();" value="Modificar" update=":dlgDatos">
+                                                        <f:setPropertyActionListener value="#{tblree}" target="#{ReembolsoC.reembolso}" />
+                                                    </p:commandButton>
+                                                </p:column>
+                                
+                                                <p:column style="width:95px" headerText="Eliminar" exportable="false">
+                                                    <p:commandButton value="Eliminar" icon="ui_icon_trash" actionListener="#{ReembolsoC.eliminar()}" update="tablaRee">
+                                                        <p:confirm header="Confirmación" message="¿Deseas eliminar?" icon="ui_icon_trash"/>
+                                                    </p:commandButton>
+                                                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                                        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                                                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+                                                    </p:confirmDialog>
+                                                </p:column>-->
+
+
+                <f:facet name="footer">
+                    EN TOTAL HAY#{fn:length(ReembolsoC.listadoReembolso)} REGISTROS.
+                </f:facet>
+            </p:dataTable>
+
+            <p:contextMenu for="tablaRee">
+                <p:menuitem value="Modificar" icon="pi pi-pencil" oncomplete="PF('wdlgDatos').show()" update=":formthree">
+                </p:menuitem>
+                <p:menuitem value="Eliminar" icon="pi pi-trash" actionListener="#{ReembolsoC.eliminar()}" update=":formtwo:tablaRee mensaje">
+                    <p:confirm header="Confirmación" message="¿Deseas eliminar?"/>                 
+                </p:menuitem>
+            </p:contextMenu>
+            <!--            <p:menuitem value="Menú" url="http://localhost:8080/Sisregvg/faces/vistas/Menu.xhtml" icon="pi pi-home"/>
+                        <p:menuitem value=" Declaracion Jurada" url="http://localhost:8080/Sisregvg/faces/vistas/DeJurada.xhtml" icon="pi pi-home"/>
+                        <p:menuitem value="Documentos" url="http://localhost:8080/Sisregvg/faces/vistas/Documentos.xhtml" icon="pi pi-home"/>              
+                        <p:menuitem value="Personal" url="http://localhost:8080/Sisregvg/faces/vistas/Personal.xhtml" icon="pi pi-home"/>-->
+            <!--            Listado de Reembolso-->
+        </h:form>
+
+
+        <!--DATOS DEL REEMBOLSO-->
+        <p:dialog header="Datos de Reembolso" widgetVar="wdlgDatos" id="dlgDatos">
+            <h:form id="formthree">
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel value="Personal"/>
+                    <p:autoComplete value="#{ReembolsoC.reembolso.nomper}" completeMethod="#{ReembolsoC.completeTextReembolso}"
+                                    inputStyle="width: 100%;" minQueryLength="2" required="true" requiredMessage="Comple el Personal">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ ]/"/>
+                    </p:autoComplete>
+                    <p:outputLabel value="DNI" />
+                    <p:inputText value="#{ReembolsoC.reembolso.dni}" maxlength="8"   required="true" requiredMessage="Digitar el dni">
+                        <p:keyFilter regEx="/[0-9]/" />
+                        <f:validateLength minimum="8"/>
+                    </p:inputText>                                             
+                    <p:outputLabel value="Motivo" /> 
+                    <p:inputText value="#{ReembolsoC.reembolso.motivo}" maxlength="400"  required="true" requiredMessage="Digitar el motivo">
+                        <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_0_:_._-_ ]/"/>
+                    </p:inputText>             
+                    <p:outputLabel value="N°Liquidacion" />
+                    <p:inputText value="#{ReembolsoC.reembolso.nliquidacion}" maxlength="10" required="true" requiredMessage="Digitar el N° de Liquidación">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="10"/>
+                    </p:inputText>
+                    <p:outputLabel value="Forma De Reembolso" />
+                    <p:selectOneRadio id="forma" value="#{ReembolsoC.reembolso.forma}"  required="true" requiredMessage="Seleccionar la forma de pago">
+                        <f:selectItem itemLabel="Efectivo" itemValue="E" />
+                        <f:selectItem itemLabel="Cheque" itemValue="C" />
+
+                    </p:selectOneRadio>   
+
+                    <p:outputLabel value="Fecha"/>
+                    <p:calendar id="fecha" value="#{ReembolsoC.reembolso.fecha}"
+                                showOn="button" pattern="dd-MM-yyyy" mask="true" navigator="true" maxdate="@now"
+                                size="20" required="true" requiredMessage="Ingrese la fecha" >
+                    </p:calendar>
+
+                    <p:outputLabel value="Area" />
+                    <p:inputText value="#{ReembolsoC.reembolso.area}" maxlength="10" required="true" requiredMessage="Digitar el area">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="10"/>
+                    </p:inputText>
+
+
+                    <p:outputLabel value="Centro de Costo" />
+                    <p:selectOneRadio id="centrodecosto" value="#{ReembolsoC.reembolso.centrodecosto}"  required="true" requiredMessage="Seleccionar el area">
+                        <f:selectItem itemLabel="Análisis de Sistemas" itemValue="2561083990" />
+                        <f:selectItem itemLabel="Producción Agraria" itemValue="2261083980" />
+                    </p:selectOneRadio> 
+
+                    <p:outputLabel value="Tipo de cuenta" />
+                    <p:selectOneRadio id="nahorroscorriente" value="#{ReembolsoC.reembolso.nahorroscorriente}"  required="true" requiredMessage="Seleccionar el area">
+                        <f:selectItem itemLabel="Ahorros" itemValue="A" />
+                        <f:selectItem itemLabel="Corriente" itemValue="C" />
+                    </p:selectOneRadio> 
+
+                    <p:outputLabel value="N° Cuenta" />
+                    <p:inputText value="#{ReembolsoC.reembolso.ncuenta}" maxlength="13"   required="true" requiredMessage="Digitar el N° de cuenta">
+                        <p:keyFilter regEx="/[0-9_.]/"/>
+                        <f:validateLength minimum="13"/>
+                    </p:inputText>
+                    <p:commandButton value="Modificar" actionListener="#{ReembolsoC.modificar()}" 
+                                     update=":formtwo:tablaRee" oncomplete="PF('wdlgDatos').hide();" >
+                        <p:confirm header="Confirmación" message="¿Deseas Modificar?" icon="ui-icon-alert"/>
+                        <p:tooltip trackMouse="true"/>
+                    </p:commandButton>
+                    <p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgDatos').hide();" />
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
+                    </p:confirmDialog>
+
+                </p:panelGrid>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>
