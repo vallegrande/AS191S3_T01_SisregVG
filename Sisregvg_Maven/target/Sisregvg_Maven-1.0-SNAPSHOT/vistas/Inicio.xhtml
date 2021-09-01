@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+    </h:head>
+    <h:body>
+        <style>
+         body{
+           background-color: #333;
+           overflow: hidden;
+       }
+       .logo{
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        width: 250px;
+        height: 100px;
+       }
+       .contenedor{
+           text-align: center;
+           margin: 0 auto;
+           height: 300px;
+           width: 350px;
+           display: flex;
+           justify-content: center;
+           align-content: center;
+           flex-direction: column;
+       }
+       .contenedor input{
+           text-align: center;
+       }
+       .contenedor button{
+           margin-top: 20px;
+           margin-bottom: -30px;
+       }
+       .pokemon{
+           width: 150px;
+           height: 150px;
+           margin: 40px auto;
+           display: inline-block;
+       }
+       p{
+           margin-top: -60px;
+       }
+    </style>
+        
+        <h:form>
+             <p:graphicImage name="images/LogoVGSoft.png" style="height:5%;max-width:25%;"/> 
+            <center>
+              <p:graphicImage name="images/POKEMON.png" style="max-width:100%;height:100%;"/> 
+                <p:panelGrid columns="3" layout="grid" styleClass="showcase-text-align-center" columnClasses="p-col-12 p-md-6 p-lg-3, p-col-12 p-md-6 p-lg-3, p-col-12 p-md-6 p-lg-3, p-col-12 p-md-6 p-lg-3">
+<!--                    <p:card style="width:25em; background:skyblue;">
+                        <p:linkButton value="POKEBOLAS" style="font-size:25px; font-weight:bold"/>
+                        <f:facet name="header">
+                            <h1 style="color:black; font-weight:bold; font-size:40px">POKEBOLAS</h1>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:graphicImage name="images/2.jpg" style="width:300px;height:250px;"/>
+                        </f:facet>
+                    </p:card>-->
+                    <p:card style="width:25em; background:skyblue;">
+                        <p:linkButton value="POKEMON" outcome="/vistas/Inicio" icon="pi pi-search" style="font-size:25px; font-weight:bold"/>
+                        <f:facet name="header">
+                            <h1 style="color:black; font-weight:bold; font-size:40px">POKEMON</h1>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:graphicImage name="images/0.gif" style="width:300px;height:250px;"/> 
+                        </f:facet>
+                    </p:card>
+<!--                    <p:card style="width:25em; background:skyblue;">
+                        <p:linkButton value="MEDALLAS" style="font-size:25px; font-weight:bold"/>
+                        <f:facet name="header">
+                            <h1 style="color:black; font-weight:bold; font-size:40px">MEDALLAS</h1>
+                        </f:facet>
+                        <f:facet name="footer">
+                            <p:graphicImage name="images/0.gif" style="width:300px;height:250px;"/>
+                        </f:facet>
+                    </p:card>-->
+                </p:panelGrid>
+            </center>
+        </h:form>
+    </h:body>
+</html>
+
