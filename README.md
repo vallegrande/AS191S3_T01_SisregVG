@@ -2,7 +2,7 @@
 <h1>SisregVG</h1>
 
 
-### Sistema de Registro de Gastos para Valle Grande (Jhianpol Ramos | José Correa)
+### Sistema de Registro de Gastos para Valle Grande (Jhianpol Ramos | Jose Rivera)
 
 ### Objetivos del sistema
 El Control y administración de los documentos de Egresos del IES Valle Grande
