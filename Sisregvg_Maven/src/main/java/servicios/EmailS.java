@@ -20,11 +20,17 @@ import modelo.Personal;
 public class EmailS {
 
     public static void enviarContraseña(Personal per) {  
+        //        Usuario  que emite o envia el correo al receptor
         String remitente = "jhianpol.ramos@gmail.com";
+        //        Contraseña de el usuario emisor
         String clave = "Ramos2021...";
+        //        Destinatario que va variar según ingreso de Email en la vista
         String destinatario = per.getEmail();
+        //        Mensaje del correo del emisor
         String asunto = "BIENVINIEDO A DBSISREGVG, ENVIO DE CONTRASEÑA";
+        //        Envio del cuerpo del mensaje
         String cuerpo = "Hola monitor su contraseña de ingreso a la plataforma SISREGVG es @Personal2021@";
+        //        Configuración para enviar el correo
         Properties props = new Properties();
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.host", "smtp.gmail.com");
