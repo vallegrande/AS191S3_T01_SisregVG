@@ -16,7 +16,7 @@ public class VCelular implements Validator {
     public void validate(FacesContext fc, UIComponent uic, Object o) throws ValidatorException {
         String numero = o.toString().trim();
         if (numero.length() != 0 && numero.length() < 10) {
-            String plantilla = "^9\\d\\d\\d\\d\\d\\d\\d\\d$";
+            String plantilla = "^9\\d\\d\\d\\d\\d\\d\\d\\d$"; 
             boolean val = Pattern.matches(plantilla, numero);
             if (!val) {
                 throw new ValidatorException(new FacesMessage("Formato inválido 9########"));

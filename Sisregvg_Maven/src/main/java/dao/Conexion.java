@@ -4,30 +4,46 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import java.util.Properties;
+//@abc123@
 
 public class Conexion {
 
     public static Connection cnx = null;
-
+    
     public static Connection conectar() throws Exception {
-
         try {
-//            String user = "sisregvg";
-//            String pwd = "registrodegastos2021-";
-//            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-//            String url = "jdbc:sqlserver://dbsisregvg.database.windows.net:1433;databaseName=dbsisregvg";
-            String user = "sa";
+            String user = "DBSISREGVG";
             String pwd = "12345";
-            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=JHIANPOL";
+            String driver = "oracle.jdbc.OracleDriver";
+            String url = "jdbc:oracle:thin:@localhost:1521/XE";
             Class.forName(driver).newInstance();
             cnx = DriverManager.getConnection(url, user, pwd);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión, revisar");
-            System.out.println("error de conexion " + e.getMessage());
+            System.out.println("Error de Conexión/Conectar " + e.getMessage());
         }
         return cnx;
     }
+
+//    public static Connection conectar() throws Exception {
+//        InputStream inputStream = Conexion.class.getClassLoader().getResourceAsStream("properties/db.properties");
+//        Properties properties = new Properties();
+//        try {
+//            properties.load(inputStream);
+//            String user = properties.getProperty("user");
+//            String pwd = properties.getProperty("pwd");
+//            String driver = properties.getProperty("driver");
+//            String url = properties.getProperty("url");
+//            Class.forName(driver).newInstance();
+//            cnx = DriverManager.getConnection(url, user, pwd);
+//        } catch (Exception e) {
+//            System.out.println("Error de Conexión/Conectar " + e.getMessage());
+//        }
+//        return cnx;
+//    }
 
     public void cerrar() throws Exception {
         if (cnx != null) {
@@ -35,17 +51,28 @@ public class Conexion {
         }
     }
 
+    public static void main(String[] args) throws Exception {
+        conectar();
+        try {
+            if (cnx != null) {
+                System.out.println("CONEXIÓN EXITOSA");
+                JOptionPane.showMessageDialog(null, "CONEXIÓN EXITOSA", "CORRECTO", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                System.out.println("SIN CONEXIÓN REVISA");
+                JOptionPane.showMessageDialog(null, "SIN CONEXIÓN REVISA", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            System.out.println("Error en " + e.getMessage());
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
     public Connection getCn() {
         return cnx;
     }
 
-    public static void main(String[] args) throws Exception {
-        conectar();
-        if (cnx != null) {
-            System.out.println("Estoy conectado");
-        } else {
-            System.out.println("Algo anda mal, revisar");
-        }
+    public void setCn(Connection cnx) {
+        this.cnx = cnx;
     }
-    
+
 }

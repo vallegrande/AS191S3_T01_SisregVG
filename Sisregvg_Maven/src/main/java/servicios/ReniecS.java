@@ -11,8 +11,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.xml.ws.Response;
 import modelo.Personal;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
+
 
 public class ReniecS {
 

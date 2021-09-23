@@ -23,8 +23,8 @@ public class EmailS {
         String remitente = "jhianpol.ramos@gmail.com";
         String clave = "Ramos2021...";
         String destinatario = per.getEmail();
-        String asunto = "Envio de la contraseña";
-        String cuerpo = " Mi contraseña de ingreso a la tabla usuario es 13579";
+        String asunto = "BIENVINIEDO A DBSISREGVG, ENVIO DE CONTRASEÑA";
+        String cuerpo = "Hola monitor su contraseña de ingreso a la plataforma SISREGVG es @Personal2021@";
         Properties props = new Properties();
         props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
         props.put("mail.smtp.host", "smtp.gmail.com");

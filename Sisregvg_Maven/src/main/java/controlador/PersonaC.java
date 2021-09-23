@@ -19,9 +19,12 @@ import org.primefaces.component.export.PDFOptions;
 import org.primefaces.component.export.PDFOrientationType;
 import servicios.Reporte;
 import lombok.Data;
+import static org.codehaus.groovy.ast.tools.GeneralUtils.args;
 import servicios.EmailS;
+
 import servicios.ReniecS;
-//import servicios.ReniecS;
+import servicios.SmsS;
+
 
 @Data
 //import servicios.Reporte;
@@ -60,9 +63,12 @@ public class PersonaC implements Serializable {
         try {
             if (!dao.existe(per, listadoPer)) {
                 dao.registrar(per);
+//                SmsS.enviarSms(per);
                 EmailS.enviarContraseña(per);
                 PrimeFaces.current().ajax().update("form");
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Registrado con ÉXITO"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Correo enviado con ÉXITO"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Mensaje de texto enviado con ÉXITO"));
                 limpiar();
                 listar();
             } else {
