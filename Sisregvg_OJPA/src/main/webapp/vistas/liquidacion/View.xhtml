@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LiquidacionViewDlg" widgetVar="LiquidacionViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.ViewLiquidacionTitle}">
+            <h:form id="LiquidacionViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{liquidacionController.selected != null}">
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_idliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.idliq}" title="#{vistas.ViewLiquidacionTitle_idliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_motliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.motliq}" title="#{vistas.ViewLiquidacionTitle_motliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_fecliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.fecliq}" title="#{vistas.ViewLiquidacionTitle_fecliq}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_areliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.areliq}" title="#{vistas.ViewLiquidacionTitle_areliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_cenliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.cenliq}" title="#{vistas.ViewLiquidacionTitle_cenliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_desliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.desliq}" title="#{vistas.ViewLiquidacionTitle_desliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_forliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.forliq}" title="#{vistas.ViewLiquidacionTitle_forliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_gasliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.gasliq}" title="#{vistas.ViewLiquidacionTitle_gasliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_salliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.salliq}" title="#{vistas.ViewLiquidacionTitle_salliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_estliq}"/>
+                        <h:outputText value="#{liquidacionController.selected.estliq}" title="#{vistas.ViewLiquidacionTitle_estliq}"/>
+                        <h:outputText value="#{vistas.ViewLiquidacionLabel_idval}"/>
+                        <h:outputText value="#{liquidacionController.selected.idval}" title="#{vistas.ViewLiquidacionTitle_idval}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vistas.Close}" onclick="LiquidacionViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReembolsoViewDlg" widgetVar="ReembolsoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.ViewReembolsoTitle}">
+            <h:form id="ReembolsoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reembolsoController.selected != null}">
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_idree}"/>
+                        <h:outputText value="#{reembolsoController.selected.idree}" title="#{vistas.ViewReembolsoTitle_idree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_motree}"/>
+                        <h:outputText value="#{reembolsoController.selected.motree}" title="#{vistas.ViewReembolsoTitle_motree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_fecree}"/>
+                        <h:outputText value="#{reembolsoController.selected.fecree}" title="#{vistas.ViewReembolsoTitle_fecree}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_areree}"/>
+                        <h:outputText value="#{reembolsoController.selected.areree}" title="#{vistas.ViewReembolsoTitle_areree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_cenree}"/>
+                        <h:outputText value="#{reembolsoController.selected.cenree}" title="#{vistas.ViewReembolsoTitle_cenree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_desree}"/>
+                        <h:outputText value="#{reembolsoController.selected.desree}" title="#{vistas.ViewReembolsoTitle_desree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_forree}"/>
+                        <h:outputText value="#{reembolsoController.selected.forree}" title="#{vistas.ViewReembolsoTitle_forree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_pagree}"/>
+                        <h:outputText value="#{reembolsoController.selected.pagree}" title="#{vistas.ViewReembolsoTitle_pagree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_nahree}"/>
+                        <h:outputText value="#{reembolsoController.selected.nahree}" title="#{vistas.ViewReembolsoTitle_nahree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_ncuree}"/>
+                        <h:outputText value="#{reembolsoController.selected.ncuree}" title="#{vistas.ViewReembolsoTitle_ncuree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_salree}"/>
+                        <h:outputText value="#{reembolsoController.selected.salree}" title="#{vistas.ViewReembolsoTitle_salree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_estree}"/>
+                        <h:outputText value="#{reembolsoController.selected.estree}" title="#{vistas.ViewReembolsoTitle_estree}"/>
+                        <h:outputText value="#{vistas.ViewReembolsoLabel_idliq}"/>
+                        <h:outputText value="#{reembolsoController.selected.idliq}" title="#{vistas.ViewReembolsoTitle_idliq}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vistas.Close}" onclick="ReembolsoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

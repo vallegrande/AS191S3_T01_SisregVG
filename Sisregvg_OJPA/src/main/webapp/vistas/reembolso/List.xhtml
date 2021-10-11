@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{vistas.ListReembolsoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="ReembolsoListForm">
+                <p:panel header="#{vistas.ListReembolsoTitle}">
+                    <p:dataTable id="datalist" value="#{reembolsoController.items}" var="item"
+                                 selectionMode="single" selection="#{reembolsoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idree}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_idree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_motree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.motree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_fecree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecree}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_areree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.areree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_cenree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cenree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_desree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_forree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.forree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_pagree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pagree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_nahree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nahree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_ncuree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ncuree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_salree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.salree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_estree}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estree}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{vistas.ListReembolsoTitle_idliq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idliq}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{vistas.Create}" actionListener="#{reembolsoController.prepareCreate}" update=":ReembolsoCreateForm" oncomplete="PF('ReembolsoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{vistas.View}" update=":ReembolsoViewForm" oncomplete="PF('ReembolsoViewDialog').show()" disabled="#{empty reembolsoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{vistas.Edit}" update=":ReembolsoEditForm" oncomplete="PF('ReembolsoEditDialog').show()" disabled="#{empty reembolsoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{vistas.Delete}" actionListener="#{reembolsoController.destroy}" update=":growl,datalist" disabled="#{empty reembolsoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReembolsoEditDlg" widgetVar="ReembolsoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.EditReembolsoTitle}">
+            <h:form id="ReembolsoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reembolsoController.selected != null}">
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_idree}" for="idree" />
+                        <p:inputText id="idree" value="#{reembolsoController.selected.idree}" title="#{vistas.EditReembolsoTitle_idree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_idree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_motree}" for="motree" />
+                        <p:inputText id="motree" value="#{reembolsoController.selected.motree}" title="#{vistas.EditReembolsoTitle_motree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_motree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_fecree}" for="fecree" />
+                        <p:calendar id="fecree" pattern="MM/dd/yyyy HH:mm:ss" value="#{reembolsoController.selected.fecree}" title="#{vistas.EditReembolsoTitle_fecree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_fecree}" showOn="button"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_areree}" for="areree" />
+                        <p:inputText id="areree" value="#{reembolsoController.selected.areree}" title="#{vistas.EditReembolsoTitle_areree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_areree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_cenree}" for="cenree" />
+                        <p:inputText id="cenree" value="#{reembolsoController.selected.cenree}" title="#{vistas.EditReembolsoTitle_cenree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_cenree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_desree}" for="desree" />
+                        <p:inputText id="desree" value="#{reembolsoController.selected.desree}" title="#{vistas.EditReembolsoTitle_desree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_desree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_forree}" for="forree" />
+                        <p:inputText id="forree" value="#{reembolsoController.selected.forree}" title="#{vistas.EditReembolsoTitle_forree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_forree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_pagree}" for="pagree" />
+                        <p:inputText id="pagree" value="#{reembolsoController.selected.pagree}" title="#{vistas.EditReembolsoTitle_pagree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_pagree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_nahree}" for="nahree" />
+                        <p:inputText id="nahree" value="#{reembolsoController.selected.nahree}" title="#{vistas.EditReembolsoTitle_nahree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_nahree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_ncuree}" for="ncuree" />
+                        <p:inputText id="ncuree" value="#{reembolsoController.selected.ncuree}" title="#{vistas.EditReembolsoTitle_ncuree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_ncuree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_salree}" for="salree" />
+                        <p:inputText id="salree" value="#{reembolsoController.selected.salree}" title="#{vistas.EditReembolsoTitle_salree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_salree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_estree}" for="estree" />
+                        <p:inputText id="estree" value="#{reembolsoController.selected.estree}" title="#{vistas.EditReembolsoTitle_estree}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_estree}"/>
+                        <p:outputLabel value="#{vistas.EditReembolsoLabel_idliq}" for="idliq" />
+                        <p:selectOneMenu id="idliq" value="#{reembolsoController.selected.idliq}" required="true" requiredMessage="#{vistas.EditReembolsoRequiredMessage_idliq}">
+                            <f:selectItem itemLabel="#{vistas.SelectOneMessage}"/>
+                            <f:selectItems value="#{liquidacionController.itemsAvailableSelectOne}"
+                                           var="idliqItem"
+                                           itemValue="#{idliqItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reembolsoController.update}" value="#{vistas.Save}" update="display,:ReembolsoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ReembolsoEditDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="ReembolsoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.ViewPersonalTitle}">
+            <h:form id="PersonalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <h:outputText value="#{vistas.ViewPersonalLabel_idper}"/>
+                        <h:outputText value="#{personalController.selected.idper}" title="#{vistas.ViewPersonalTitle_idper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_nomper}"/>
+                        <h:outputText value="#{personalController.selected.nomper}" title="#{vistas.ViewPersonalTitle_nomper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_apeper}"/>
+                        <h:outputText value="#{personalController.selected.apeper}" title="#{vistas.ViewPersonalTitle_apeper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_dniper}"/>
+                        <h:outputText value="#{personalController.selected.dniper}" title="#{vistas.ViewPersonalTitle_dniper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_celper}"/>
+                        <h:outputText value="#{personalController.selected.celper}" title="#{vistas.ViewPersonalTitle_celper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_emaper}"/>
+                        <h:outputText value="#{personalController.selected.emaper}" title="#{vistas.ViewPersonalTitle_emaper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_domper}"/>
+                        <h:outputText value="#{personalController.selected.domper}" title="#{vistas.ViewPersonalTitle_domper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_sexper}"/>
+                        <h:outputText value="#{personalController.selected.sexper}" title="#{vistas.ViewPersonalTitle_sexper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_carper}"/>
+                        <h:outputText value="#{personalController.selected.carper}" title="#{vistas.ViewPersonalTitle_carper}"/>
+                        <h:outputText value="#{vistas.ViewPersonalLabel_estper}"/>
+                        <h:outputText value="#{personalController.selected.estper}" title="#{vistas.ViewPersonalTitle_estper}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vistas.Close}" onclick="PersonalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

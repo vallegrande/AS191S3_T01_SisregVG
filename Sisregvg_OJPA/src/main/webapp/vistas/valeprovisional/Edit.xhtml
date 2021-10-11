@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValeprovisionalEditDlg" widgetVar="ValeprovisionalEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.EditValeprovisionalTitle}">
+            <h:form id="ValeprovisionalEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valeprovisionalController.selected != null}">
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_idval}" for="idval" />
+                        <p:inputText id="idval" value="#{valeprovisionalController.selected.idval}" title="#{vistas.EditValeprovisionalTitle_idval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_idval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_impval}" for="impval" />
+                        <p:inputText id="impval" value="#{valeprovisionalController.selected.impval}" title="#{vistas.EditValeprovisionalTitle_impval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_impval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_fecval}" for="fecval" />
+                        <p:calendar id="fecval" pattern="MM/dd/yyyy HH:mm:ss" value="#{valeprovisionalController.selected.fecval}" title="#{vistas.EditValeprovisionalTitle_fecval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_fecval}" showOn="button"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_cenval}" for="cenval" />
+                        <p:inputText id="cenval" value="#{valeprovisionalController.selected.cenval}" title="#{vistas.EditValeprovisionalTitle_cenval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_cenval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_proval}" for="proval" />
+                        <p:inputText id="proval" value="#{valeprovisionalController.selected.proval}" title="#{vistas.EditValeprovisionalTitle_proval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_proval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_actval}" for="actval" />
+                        <p:inputText id="actval" value="#{valeprovisionalController.selected.actval}" title="#{vistas.EditValeprovisionalTitle_actval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_actval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_estval}" for="estval" />
+                        <p:inputText id="estval" value="#{valeprovisionalController.selected.estval}" title="#{vistas.EditValeprovisionalTitle_estval}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_estval}"/>
+                        <p:outputLabel value="#{vistas.EditValeprovisionalLabel_idper}" for="idper" />
+                        <p:selectOneMenu id="idper" value="#{valeprovisionalController.selected.idper}" required="true" requiredMessage="#{vistas.EditValeprovisionalRequiredMessage_idper}">
+                            <f:selectItem itemLabel="#{vistas.SelectOneMessage}"/>
+                            <f:selectItems value="#{personalController.itemsAvailableSelectOne}"
+                                           var="idperItem"
+                                           itemValue="#{idperItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{valeprovisionalController.update}" value="#{vistas.Save}" update="display,:ValeprovisionalListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ValeprovisionalEditDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="ValeprovisionalEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

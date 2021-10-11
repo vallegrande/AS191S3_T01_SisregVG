@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalCreateDlg" widgetVar="PersonalCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.CreatePersonalTitle}">
+            <h:form id="PersonalCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_idper}" for="idper" />
+                        <p:inputText id="idper" value="#{personalController.selected.idper}" title="#{vistas.CreatePersonalTitle_idper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_idper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_nomper}" for="nomper" />
+                        <p:inputText id="nomper" value="#{personalController.selected.nomper}" title="#{vistas.CreatePersonalTitle_nomper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_nomper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_apeper}" for="apeper" />
+                        <p:inputText id="apeper" value="#{personalController.selected.apeper}" title="#{vistas.CreatePersonalTitle_apeper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_apeper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_dniper}" for="dniper" />
+                        <p:inputText id="dniper" value="#{personalController.selected.dniper}" title="#{vistas.CreatePersonalTitle_dniper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_dniper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_celper}" for="celper" />
+                        <p:inputText id="celper" value="#{personalController.selected.celper}" title="#{vistas.CreatePersonalTitle_celper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_celper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_emaper}" for="emaper" />
+                        <p:inputText id="emaper" value="#{personalController.selected.emaper}" title="#{vistas.CreatePersonalTitle_emaper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_emaper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_domper}" for="domper" />
+                        <p:inputText id="domper" value="#{personalController.selected.domper}" title="#{vistas.CreatePersonalTitle_domper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_domper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_sexper}" for="sexper" />
+                        <p:inputText id="sexper" value="#{personalController.selected.sexper}" title="#{vistas.CreatePersonalTitle_sexper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_sexper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_carper}" for="carper" />
+                        <p:inputText id="carper" value="#{personalController.selected.carper}" title="#{vistas.CreatePersonalTitle_carper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_carper}"/>
+                        <p:outputLabel value="#{vistas.CreatePersonalLabel_estper}" for="estper" />
+                        <p:inputText id="estper" value="#{personalController.selected.estper}" title="#{vistas.CreatePersonalTitle_estper}" required="true" requiredMessage="#{vistas.CreatePersonalRequiredMessage_estper}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{personalController.create}" value="#{vistas.Save}" update="display,:PersonalListForm:datalist,:growl" oncomplete="handleSubmit(args,'PersonalCreateDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="PersonalCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentosEditDlg" widgetVar="DocumentosEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.EditDocumentosTitle}">
+            <h:form id="DocumentosEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentosController.selected != null}">
+                        <p:outputLabel value="#{vistas.EditDocumentosLabel_iddoc}" for="iddoc" />
+                        <p:inputText id="iddoc" value="#{documentosController.selected.iddoc}" title="#{vistas.EditDocumentosTitle_iddoc}" required="true" requiredMessage="#{vistas.EditDocumentosRequiredMessage_iddoc}"/>
+                        <p:outputLabel value="#{vistas.EditDocumentosLabel_impdoc}" for="impdoc" />
+                        <p:inputText id="impdoc" value="#{documentosController.selected.impdoc}" title="#{vistas.EditDocumentosTitle_impdoc}" required="true" requiredMessage="#{vistas.EditDocumentosRequiredMessage_impdoc}"/>
+                        <p:outputLabel value="#{vistas.EditDocumentosLabel_fecdoc}" for="fecdoc" />
+                        <p:calendar id="fecdoc" pattern="MM/dd/yyyy HH:mm:ss" value="#{documentosController.selected.fecdoc}" title="#{vistas.EditDocumentosTitle_fecdoc}" required="true" requiredMessage="#{vistas.EditDocumentosRequiredMessage_fecdoc}" showOn="button"/>
+                        <p:outputLabel value="#{vistas.EditDocumentosLabel_asudoc}" for="asudoc" />
+                        <p:inputText id="asudoc" value="#{documentosController.selected.asudoc}" title="#{vistas.EditDocumentosTitle_asudoc}" required="true" requiredMessage="#{vistas.EditDocumentosRequiredMessage_asudoc}"/>
+                        <p:outputLabel value="#{vistas.EditDocumentosLabel_estdoc}" for="estdoc" />
+                        <p:inputText id="estdoc" value="#{documentosController.selected.estdoc}" title="#{vistas.EditDocumentosTitle_estdoc}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentosController.update}" value="#{vistas.Save}" update="display,:DocumentosListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DocumentosEditDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="DocumentosEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentosCreateDlg" widgetVar="DocumentosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.CreateDocumentosTitle}">
+            <h:form id="DocumentosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentosController.selected != null}">
+                        <p:outputLabel value="#{vistas.CreateDocumentosLabel_iddoc}" for="iddoc" />
+                        <p:inputText id="iddoc" value="#{documentosController.selected.iddoc}" title="#{vistas.CreateDocumentosTitle_iddoc}" required="true" requiredMessage="#{vistas.CreateDocumentosRequiredMessage_iddoc}"/>
+                        <p:outputLabel value="#{vistas.CreateDocumentosLabel_impdoc}" for="impdoc" />
+                        <p:inputText id="impdoc" value="#{documentosController.selected.impdoc}" title="#{vistas.CreateDocumentosTitle_impdoc}" required="true" requiredMessage="#{vistas.CreateDocumentosRequiredMessage_impdoc}"/>
+                        <p:outputLabel value="#{vistas.CreateDocumentosLabel_fecdoc}" for="fecdoc" />
+                        <p:calendar id="fecdoc" pattern="MM/dd/yyyy HH:mm:ss" value="#{documentosController.selected.fecdoc}" title="#{vistas.EditDocumentosTitle_fecdoc}" required="true" requiredMessage="#{vistas.EditDocumentosRequiredMessage_fecdoc}" showOn="button"/>
+                        <p:outputLabel value="#{vistas.CreateDocumentosLabel_asudoc}" for="asudoc" />
+                        <p:inputText id="asudoc" value="#{documentosController.selected.asudoc}" title="#{vistas.CreateDocumentosTitle_asudoc}" required="true" requiredMessage="#{vistas.CreateDocumentosRequiredMessage_asudoc}"/>
+                        <p:outputLabel value="#{vistas.CreateDocumentosLabel_estdoc}" for="estdoc" />
+                        <p:inputText id="estdoc" value="#{documentosController.selected.estdoc}" title="#{vistas.CreateDocumentosTitle_estdoc}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentosController.create}" value="#{vistas.Save}" update="display,:DocumentosListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocumentosCreateDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="DocumentosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

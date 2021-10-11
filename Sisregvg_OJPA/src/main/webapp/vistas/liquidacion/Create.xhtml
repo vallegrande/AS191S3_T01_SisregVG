@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LiquidacionCreateDlg" widgetVar="LiquidacionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vistas.CreateLiquidacionTitle}">
+            <h:form id="LiquidacionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{liquidacionController.selected != null}">
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_idliq}" for="idliq" />
+                        <p:inputText id="idliq" value="#{liquidacionController.selected.idliq}" title="#{vistas.CreateLiquidacionTitle_idliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_idliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_motliq}" for="motliq" />
+                        <p:inputText id="motliq" value="#{liquidacionController.selected.motliq}" title="#{vistas.CreateLiquidacionTitle_motliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_motliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_fecliq}" for="fecliq" />
+                        <p:calendar id="fecliq" pattern="MM/dd/yyyy HH:mm:ss" value="#{liquidacionController.selected.fecliq}" title="#{vistas.EditLiquidacionTitle_fecliq}" required="true" requiredMessage="#{vistas.EditLiquidacionRequiredMessage_fecliq}" showOn="button"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_areliq}" for="areliq" />
+                        <p:inputText id="areliq" value="#{liquidacionController.selected.areliq}" title="#{vistas.CreateLiquidacionTitle_areliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_areliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_cenliq}" for="cenliq" />
+                        <p:inputText id="cenliq" value="#{liquidacionController.selected.cenliq}" title="#{vistas.CreateLiquidacionTitle_cenliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_cenliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_desliq}" for="desliq" />
+                        <p:inputText id="desliq" value="#{liquidacionController.selected.desliq}" title="#{vistas.CreateLiquidacionTitle_desliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_desliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_forliq}" for="forliq" />
+                        <p:inputText id="forliq" value="#{liquidacionController.selected.forliq}" title="#{vistas.CreateLiquidacionTitle_forliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_forliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_gasliq}" for="gasliq" />
+                        <p:inputText id="gasliq" value="#{liquidacionController.selected.gasliq}" title="#{vistas.CreateLiquidacionTitle_gasliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_gasliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_salliq}" for="salliq" />
+                        <p:inputText id="salliq" value="#{liquidacionController.selected.salliq}" title="#{vistas.CreateLiquidacionTitle_salliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_salliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_estliq}" for="estliq" />
+                        <p:inputText id="estliq" value="#{liquidacionController.selected.estliq}" title="#{vistas.CreateLiquidacionTitle_estliq}" required="true" requiredMessage="#{vistas.CreateLiquidacionRequiredMessage_estliq}"/>
+                        <p:outputLabel value="#{vistas.CreateLiquidacionLabel_idval}" for="idval" />
+                        <p:selectOneMenu id="idval" value="#{liquidacionController.selected.idval}" required="true" requiredMessage="#{vistas.EditLiquidacionRequiredMessage_idval}">
+                            <f:selectItems value="#{valeprovisionalController.itemsAvailableSelectOne}"
+                                           var="idvalItem"
+                                           itemValue="#{idvalItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{liquidacionController.create}" value="#{vistas.Save}" update="display,:LiquidacionListForm:datalist,:growl" oncomplete="handleSubmit(args,'LiquidacionCreateDialog');"/>
+                    <p:commandButton value="#{vistas.Cancel}" onclick="LiquidacionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
