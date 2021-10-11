@@ -221,17 +221,17 @@ VALUES ('20,00', '24-06-2021', 'Realizar Vale Provisional','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
 VALUES ( 'Juan Marcos', 'Rodriguez Quispe', '74143345','961270878','juan.rodrigues@vallegrande.edu.pe','Nuevo Imperial Mz:K Lt:3','M','Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
-VALUES ( 'Carl Sinól', 'Sanchez Pardo', '74153321','961243876','carl.sanchez@vallegrande.edu.pe', 'Santa Rosa Mz:J Lt:5','M', 'Trabajador','A');
+VALUES ( 'Carl SinÃ³l', 'Sanchez Pardo', '74153321','961243876','carl.sanchez@vallegrande.edu.pe', 'Santa Rosa Mz:J Lt:5','M', 'Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
-VALUES ( 'Frank Marmol', 'Beltrán Escalante', '76213421','961457980','frank@felipe@vallegrande.edu.pe','Imperial Mz:C Lt:9', 'M','Trabajador','A');
+VALUES ( 'Frank Marmol', 'BeltrÃ¡n Escalante', '76213421','961457980','frank@felipe@vallegrande.edu.pe','Imperial Mz:C Lt:9', 'M','Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
-VALUES ( 'Mateo Miklo', 'Vidal Burquéz', '76520534','961245767','mateo.vidal@vallegrande.edu.pe','Mala Mz:V Lt:2', 'M','Trabajador','A');
+VALUES ( 'Mateo Miklo', 'Vidal BurquÃ©z', '76520534','961245767','mateo.vidal@vallegrande.edu.pe','Mala Mz:V Lt:2', 'M','Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
 VALUES ( 'Flavio Francisco', 'Huaman Zambrano', '76438332','961043532','flavio.huaman@vallegrande.edu.pe','San Vicente Mz:E Lt:4', 'M','Estudiante','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
-VALUES ( 'Lenox Beltrán', 'Zuriaga Barton', '74153021','961243876','lenox.zuriaga@vallegrande.edu.pe', 'Santa Anita Mz:J Lt:5','M', 'Trabajador','A');
+VALUES ( 'Lenox BeltrÃ¡n', 'Zuriaga Barton', '74153021','961243876','lenox.zuriaga@vallegrande.edu.pe', 'Santa Anita Mz:J Lt:5','M', 'Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
-VALUES ( 'Franklin Malla', 'Murieta Malcón', '76210121','961457980','franklin.murieta@vallegrande.edu.pe','Hualcalra Mz:C Lt:9', 'M','Trabajador','A');
+VALUES ( 'Franklin Malla', 'Murieta MalcÃ³n', '76210121','961457980','franklin.murieta@vallegrande.edu.pe','Hualcalra Mz:C Lt:9', 'M','Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
 VALUES ( 'Martin Chiklo', 'Mollo Cardenaz', '76038534','961245767','martin.mollo@vallegrande.edu.pe','Mala Mz:V Lt:2', 'M','Trabajador','A');
 INSERT INTO PERSONAL (nomper, apeper, dniper, celper, emaper,domper, sexper,carper, estper)
@@ -263,49 +263,49 @@ VALUES ('10,00','24-02-2020','100211','Proyecto4','Compra de teclados para compu
 
 -- INSERTAR REGISTROS DE LIQUIDACION
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('1','Monitoreo a lugares SBS Chilca, Mala, Cañete y Yauyos','06-02-2021','Carrera Profesional de Análisis de Sistemas','200201','Monitorio y Evaluación de Prácticas-AS','Soles','200,00','50,00','A');
+VALUES ('1','Monitoreo a lugares SBS Chilca, Mala, CaÃ±ete y Yauyos','06-02-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200201','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','200,00','50,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('2','Monitoreo a lugares SBS Ica, Mala, Cañete y Yauyos','20-05-2021','Carrera Profesional de Análisis de Sistemas','200202','Monitorio y Evaluación de Prácticas-AS','USD','160,00','20,00','A');
+VALUES ('2','Monitoreo a lugares SBS Ica, Mala, CaÃ±ete y Yauyos','20-05-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200202','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','USD','160,00','20,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('3','Monitoreo a lugares SBS Chinca, Mala, Cañete y Yauyos','19-03-2021','Carrera Profesional de Análisis de Sistemas','200203','Monitorio y Evaluación de Prácticas-AS','Soles','150,00','30,00','A');
+VALUES ('3','Monitoreo a lugares SBS Chinca, Mala, CaÃ±ete y Yauyos','19-03-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200203','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','150,00','30,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('4','Monitoreo a lugares SBS Cañete, Mala, Cañete y Yauyos','12-05-2021','Carrera Profesional de Análisis de Sistemas','200204','Monitorio y Evaluación de Prácticas-AS','Soles','140,00','70,00','A');
+VALUES ('4','Monitoreo a lugares SBS CaÃ±ete, Mala, CaÃ±ete y Yauyos','12-05-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200204','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','140,00','70,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('5','Monitoreo a lugares SBS Chilcal, Mala, Cañete y Yauyos','26-04-2021','Carrera Profesional de Análisis de Sistemas','200201','Monitorio y Evaluación de Prácticas-AS','Soles','200,00','50,00','A');
+VALUES ('5','Monitoreo a lugares SBS Chilcal, Mala, CaÃ±ete y Yauyos','26-04-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200201','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','200,00','50,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('6','Monitoreo a lugares SBS Ica, Mala, Cañete y Yauyos','25-07-2021','Carrera Profesional de Análisis de Sistemas','200202','Monitorio y Evaluación de Prácticas-AS','USD','160,00','20,00','A');
+VALUES ('6','Monitoreo a lugares SBS Ica, Mala, CaÃ±ete y Yauyos','25-07-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200202','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','USD','160,00','20,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('7','Monitoreo a lugares SBS Chinca, Mala, Cañete y Yauyos','29-07-2021','Carrera Profesional de Análisis de Sistemas','200203','Monitorio y Evaluación de Prácticas-AS','Soles','150,00','30,00','A');
+VALUES ('7','Monitoreo a lugares SBS Chinca, Mala, CaÃ±ete y Yauyos','29-07-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200203','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','150,00','30,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('8','Monitoreo a lugares SBS Hualcara, Mala, Cañete y Yauyos','12-08-2021','Carrera Profesional de Análisis de Sistemas','200204','Monitorio y Evaluación de Prácticas-AS','Soles','140,00','70,00','A');
+VALUES ('8','Monitoreo a lugares SBS Hualcara, Mala, CaÃ±ete y Yauyos','12-08-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200204','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','140,00','70,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('9','Monitoreo a lugares SBS Chincha alta, Mala, Cañete y Yauyos','17-05-2021','Carrera Profesional de Análisis de Sistemas','200203','Monitorio y Evaluación de Prácticas-AS','Soles','150,00','30,00','A');
+VALUES ('9','Monitoreo a lugares SBS Chincha alta, Mala, CaÃ±ete y Yauyos','17-05-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200203','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','150,00','30,00','A');
 INSERT INTO Liquidacion (IDVAL,MOTLIQ,FECLIQ,ARELIQ,CENLIQ,DESLIQ,FORLIQ, GASLIQ, SALLIQ,ESTLIQ)
-VALUES ('10','Monitoreo a lugares SBS Piura, Mala, Cañete y Yauyos','02-04-2021','Carrera Profesional de Análisis de Sistemas','200204','Monitorio y Evaluación de Prácticas-AS','Soles','140,00','70,00','A');
+VALUES ('10','Monitoreo a lugares SBS Piura, Mala, CaÃ±ete y Yauyos','02-04-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200204','Monitorio y EvaluaciÃ³n de PrÃ¡cticas-AS','Soles','140,00','70,00','A');
 
 
 
 -- INSERTAR REGISTROS DE REEMBOLSO
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '1', 'Compra de materiales para computo','20-02-2021','Carrera Profesional de Análisis de Sistemas','200201','ENERFIA ELÉCTRICA- AS','SOLES','E','A','103489782Y','126,00','A');
+VALUES ( '1', 'Compra de materiales para computo','20-02-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200201','ENERFIA ELÃ‰CTRICA- AS','SOLES','E','A','103489782Y','126,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '2',  'Compra de materiales para laboratorio','10-05-2021','Carrera Profesional de Análisis de Sistemas','200202','RPM - AS','SOLES','E','A','103489782Y','106,00','A');
+VALUES ( '2',  'Compra de materiales para laboratorio','10-05-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200202','RPM - AS','SOLES','E','A','103489782Y','106,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '3', 'Compra de materiales','22-02-2021','Carrera Profesional de Análisis de Sistemas','200203','SOFTWARE DE GESTION ACADÉMICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
+VALUES ( '3', 'Compra de materiales','22-02-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200203','SOFTWARE DE GESTION ACADÃ‰MICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '4',  'Compra de materiales','19-09-2021','Carrera Profesional de Análisis de Sistemas','200204','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
+VALUES ( '4',  'Compra de materiales','19-09-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200204','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '5', 'Compra de materiales para computo','29-04-2021','Carrera Profesional de Análisis de Sistemas','200205','ENERFIA ELÉCTRICA- AS','SOLES','E','A','103489782Y','126,00','A');
+VALUES ( '5', 'Compra de materiales para computo','29-04-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200205','ENERFIA ELÃ‰CTRICA- AS','SOLES','E','A','103489782Y','126,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '6',  'Compra de materiales para laboratorio','15-05-2021','Carrera Profesional de Análisis de Sistemas','200202','RPM - AS','SOLES','E','A','103489782Y','106,00','A');
+VALUES ( '6',  'Compra de materiales para laboratorio','15-05-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200202','RPM - AS','SOLES','E','A','103489782Y','106,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '7', 'Compra de materiales','22-02-2021','Carrera Profesional de Análisis de Sistemas','200206','SOFTWARE DE GESTION ACADÉMICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
+VALUES ( '7', 'Compra de materiales','22-02-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200206','SOFTWARE DE GESTION ACADÃ‰MICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '8',  'Compra de materiales','29-09-2021','Carrera Profesional de Análisis de Sistemas','200207','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
+VALUES ( '8',  'Compra de materiales','29-09-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200207','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '9', 'Compra de materiales','24-02-2021','Carrera Profesional de Análisis de Sistemas','200208','SOFTWARE DE GESTION ACADÉMICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
+VALUES ( '9', 'Compra de materiales','24-02-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200208','SOFTWARE DE GESTION ACADÃ‰MICA Q10- AS','SOLES','C','A','103489782Y','120,00','A');
 INSERT INTO REEMBOLSO (IDLIQ, MOTREE,FECREE,AREREE,CENREE,DESREE,FORREE, PAGREE, NAHREE,NCUREE, SALREE, ESTREE)
-VALUES ( '10',  'Compra de materiales','09-09-2021','Carrera Profesional de Análisis de Sistemas','200209','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
+VALUES ( '10',  'Compra de materiales','09-09-2021','Carrera Profesional de AnÃ¡lisis de Sistemas','200209','VISITAS DE ESTUDIOS(NT) - AS','SOLES','E','A','103489782Y','129,00','A');
 
 
 
@@ -402,7 +402,7 @@ FROM
 
 
 
---Creación de Vistas Personal
+--CreaciÃ³n de Vistas Personal
 --Personal Activos
 CREATE VIEW vPersonalA
 AS
@@ -465,7 +465,7 @@ FROM
      
      
 
---Creación de la Vista LiquidacionEntregasRendir
+--CreaciÃ³n de la Vista LiquidacionEntregasRendir
 ---- LiquidacionEntregasRendir Activos
 
 
@@ -553,7 +553,7 @@ FROM
 	 V.IDPER = P.idper ;
 
 
---Creación de las Vistas REEMBOLSO 
+--CreaciÃ³n de las Vistas REEMBOLSO 
 --Vistas Vale vREEMBOLSO 
 CREATE VIEW vREEMBOLSOA
 AS
