@@ -121,6 +121,15 @@ public class ReniecS {
 //            System.out.println(ex.getMessage());
 //            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Busqueda", "RUC no encontrado"));
 //        }
+
 //
 //    }
+
+    
+    
+    
+    
+    
+    
+
 }
