@@ -37,6 +37,9 @@ public class PersonaImpl extends Conexion implements ICRUD<Personal> {
         }
     }
 
+    
+    
+    
     @Override
     public void modificar(Personal per) throws Exception {
         String sql = "update PERSONAL set NOMPER=?, APEPER=?,DNIPER=?,CELPER=?,EMAPER=?,DOMPER=?,SEXPER=?,CARPER=?, ESTPER=? where IDPER=? ";
