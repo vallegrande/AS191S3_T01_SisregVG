@@ -66,46 +66,12 @@ public class Reporte extends Conexion {
             e.printStackTrace();
         }
     }
-    public void reporteIdVal(String root, String id) {
-        try {
-            File reportfile = new File(root);
-            Map<String, Object> parameter = new HashMap<String, Object>();
-            parameter.put("val", id);
-            byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter, Conexion.conectar());
-            HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-            httpServletResponse.setContentType("application/pdf");
-            httpServletResponse.setContentLength(bytes.length);
-            ServletOutputStream outputstream = httpServletResponse.getOutputStream();
-            outputstream.write(bytes, 0, bytes.length);
-            outputstream.flush();
-            outputstream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     
     
     
     
-    
-      public void reporteIdDej(String root, String id) {
-        try {
-            File reportfile = new File(root);
-            Map<String, Object> parameter = new HashMap<String, Object>();
-            parameter.put("dej", id);
-            byte[] bytes = JasperRunManager.runReportToPdf(reportfile.getPath(), parameter, Conexion.conectar());
-            HttpServletResponse httpServletResponse = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
-            httpServletResponse.setContentType("application/pdf");
-            httpServletResponse.setContentLength(bytes.length);
-            ServletOutputStream outputstream = httpServletResponse.getOutputStream();
-            outputstream.write(bytes, 0, bytes.length);
-            outputstream.flush();
-            outputstream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+  
 //    public void ReportePdf(String root, String numeroinformesocial) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
