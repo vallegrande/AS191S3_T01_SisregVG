@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import lombok.Data;
 import modelo.Usuario;
-import servicios.EmailS;
 
 @Data
 @Named(value = "usuarioC")
