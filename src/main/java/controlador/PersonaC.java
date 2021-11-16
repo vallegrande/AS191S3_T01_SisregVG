@@ -23,8 +23,7 @@ import org.primefaces.component.export.PDFOrientationType;
 import servicios.Reporte;
 import lombok.Data;
 import static org.codehaus.groovy.ast.tools.GeneralUtils.args;
-import servicios.EmailS;
-import servicios.ReniecS;
+import servicios.Reniec;
 import servicios.SmsS;
 
 @Data
@@ -62,7 +61,7 @@ public class PersonaC implements Serializable {
 //    }
     public void buscarDNI() {
         try {
-            ReniecS.buscarDni(per);
+            Reniec.buscarDni(per);
         } catch (Exception e) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Busqueda", "DNI no encontrado"));
             System.out.println("error en Busqueda DNI" + e.getMessage());

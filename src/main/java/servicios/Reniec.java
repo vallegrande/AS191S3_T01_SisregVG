@@ -13,7 +13,7 @@ import javax.xml.ws.Response;
 import modelo.Personal;
 
 
-public class ReniecS {
+public class Reniec {
 
     public static void buscarDni(Personal per) throws Exception {
         String dni = per.getDni();
