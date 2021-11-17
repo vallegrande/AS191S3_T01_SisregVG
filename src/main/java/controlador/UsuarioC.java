@@ -118,7 +118,6 @@ public class UsuarioC implements Serializable {
                 }
             } else {
                 String usu = usuario.getUSUUSU();
-                EmailS.sendNotification(usu);
 //                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("objetoUsuario", usuario);
                 this.loginNivel();
                 if (dao.nivel == 1) {

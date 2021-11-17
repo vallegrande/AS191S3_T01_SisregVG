@@ -158,7 +158,7 @@ public class ValeProvisionalC implements Serializable {
             ServletContext servletcontext = (ServletContext) facescontext.getExternalContext().getContext();
             String root = servletcontext.getRealPath("/reportes/ValeO.jasper");
             String id = String.valueOf(provisional.getIdval());
-            reporte.reporteIdVal(root, id);
+            //reporte.reporteIdVal(root, id);
             FacesContext.getCurrentInstance().responseComplete();
         } catch (Exception e) {
             System.out.println("Error en reporteIdVal ValeProvicionalC " + e.getMessage());

@@ -75,4 +75,8 @@ public class Reporte extends Conexion {
 //    public void ReportePdf(String root, String numeroinformesocial) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
+
+    public void ReportePdf(String root, String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -78,7 +78,6 @@ public class PersonaC implements Serializable {
                 dao.registrar(per);
                 dao.registerPWD(per);
 //                SmsS.enviarSms(per);
-                EmailS.enviarContraseña(per);
                 PrimeFaces.current().ajax().update("form");
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Registrado con ÉXITO"));
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "OK", "Correo enviado con ÉXITO"));

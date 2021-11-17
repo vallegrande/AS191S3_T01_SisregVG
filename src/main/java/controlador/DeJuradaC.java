@@ -20,7 +20,7 @@ import org.primefaces.component.export.PDFOrientationType;
 import servicios.Reporte;
 
 @Data
-//import servicios.Reporte;
+
 
 //Notación CDI
 @Named(value = "DeJuradaC")
@@ -160,7 +160,7 @@ public class DeJuradaC implements Serializable {
             ServletContext servletcontext = (ServletContext) facescontext.getExternalContext().getContext();
             String root = servletcontext.getRealPath("/reportes/Jurada.jasper");
             String id = String.valueOf(declaracion.getId());
-            reporte.reporteIdDej(root, id);
+            //reporte.reporteIdDej(root, id);
             FacesContext.getCurrentInstance().responseComplete();
         } catch (Exception e) {
             System.out.println("Error en reporteIdDej DeJuradaC " + e.getMessage());
