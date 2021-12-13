@@ -25,12 +25,14 @@ D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\dao
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\dao\ICRUD.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\VCelular.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\controlador\UsuarioC.java
+D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\EncriptarPWD.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\modelo\Dashboard.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\SmsS.java
-D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\dao\UsuarioDao.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\VEmail.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\EmailS.java
+D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\dao\UsuarioD.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\servicios\ReniecS.java
+D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\content\Galleria.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\dao\ValeProvisionalImpl.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\modelo\Reembolso.java
 D:\NetBeansProjects8.2\AS201S3_T01_Sisregvg_ODAO\Sisregvg_ODAO\src\main\java\controlador\LiquidacionC.java

@@ -5,14 +5,20 @@
  */
 package modelo;
 
+import java.util.UUID;
 import lombok.Data;
 
 @Data
 public class Usuario {
 
+    String pwd1 = UUID.randomUUID().toString().toUpperCase().substring(2, 6);
+    String pwd2 = UUID.randomUUID().toString().toLowerCase().substring(2, 6);
+    String pwd3 = "/-";
+    String password = pwd1 + pwd2 + pwd3;
+
     private int IDUSU;
     private String USUUSU;
-    private String PWDUSU;
+    private String PWDUSU = password;
     private int LEVUSU;
     private String ESTUSU;
     private Integer idper;
@@ -22,18 +28,6 @@ public class Usuario {
     private Personal personal = new Personal();
 
     public Usuario() {
-    }
-
-    public Usuario(int IDUSU, String USUUSU, String PWDUSU, int LEVUSU, String ESTUSU, Integer idper, String nombre, String apellido, String email) {
-        this.IDUSU = IDUSU;
-        this.USUUSU = USUUSU;
-        this.PWDUSU = PWDUSU;
-        this.LEVUSU = LEVUSU;
-        this.ESTUSU = ESTUSU;
-        this.idper = idper;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
     }
 
 }

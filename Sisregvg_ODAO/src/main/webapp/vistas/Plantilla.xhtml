@@ -41,11 +41,11 @@
     <h:body class="main-body ">
         <div class="layout-wrapper layout-topbar-light layout-static-active layout-menu-dim  layout-static layout-static-active ">
 
-            <div class="layout-topbar">
+            <div class="layout-topbar" style="height:70px;">
                 <div class="layout-topbar-wrapper">
                     <div class="layout-topbar-left">
                         <a id="logolink" name="logolink" href="Contenido.xhtml" class="layout-topbar-logo">
-                            <img id="j_idt12" src="#{request.contextPath}/faces/resources/images/RegistroGastos.png" alt=""/>
+                            <img id="j_idt12" src="#{request.contextPath}/faces/resources/images/RegistroGastos.png" alt="" style="width:220px;height:65px;"/>
                         </a>
                     </div>
                     <div class="layout-topbar-right">
@@ -53,10 +53,214 @@
                             <i class="pi pi-bars"></i>
                             <span style="float:right; color:black; font-weight:bold">MENÚ</span>
                         </a>
-                    </div>
-                    <div style="float:right; color:black; font-weight:bold">
-                        <b>FECHA: </b><p:clock pattern="dd-MMM-yyyy" mode="server"/>
-                        <b>HORA: </b><p:clock pattern="HH:mm:ss" mode="server"/>
+                        <a href="#" class="menu-button" style="width:8%; height:100%; background:white">
+                        </a>
+                        <a href="#" class="menu-button" style="width:8%; height:100%; background:white">
+                        </a>
+                        <a style="text-align:center; color:black; font-weight:bold">
+                            <b>FECHA: </b><p:clock pattern="dd-MMM-yyyy" mode="server"/>
+                            <b>HORA: </b><p:clock pattern="HH:mm:ss" mode="server"/>
+                        </a>
+                        <ul class="layout-topbar-actions">
+                            <li class="search-item topbar-item">
+                                <a href="#">
+                                    <span class="topbar-icon">
+                                        <i class="pi pi-search"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="topbar-item notifications">
+                                <a href="#">
+                                    <span class="">
+                                        <i class="pi pi-bell"></i>
+                                        <span class="ui-badge">2</span>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li class="layout-submenu-header">
+                                        <h6 class="header-text">Notifications</h6>
+                                        <span class="ui-badge">3</span>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="fa fa-fw fa-edit"></i>
+                                            <div class="notifications-item">
+                                                <h6>Order <span>#2254</span> is placed</h6>
+                                                <span>Total Amount of <span>$34.50</span></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-clock"></i>
+                                            <div class="notifications-item">
+                                                <h6>Meeting with <span>AF04</span> Team</h6>
+                                                <span>Google Meets</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-th-large"></i>
+                                            <div class="notifications-item">
+                                                <h6>Task <span>#41</span> is complete</h6>
+                                                <span>9 Remaining Tasks</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-shopping-cart"></i>
+                                            <div class="notifications-item">
+                                                <h6>Order <span>#2255</span> is placed</h6>
+                                                <span>Total Amount of <span>$40.45</span></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="topbar-item messages">
+                                <a href="#">
+                                    <span class="ui-overlay-badge topbar-icon">
+                                        <i class="pi pi-comments"></i>
+                                        <span class="ui-badge">6</span>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li class="layout-submenu-header">
+                                        <h6 class="header-text">Messages</h6>
+                                        <span class="ui-badge">5</span>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0"><img id="j_idt24"
+                                                             src="#{request.contextPath}/faces/resources/images/24.jpg" 
+                                                             alt="" />
+                                            <div class="messages-item">
+                                                <h6>Hey! I sent the sales report</h6>
+                                                <span>Dusana Semenov</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0"><img id="j_idt26"
+                                                             src="#{request.contextPath}/faces/resources/images/Jhianpol.jpg" 
+                                                             alt="" />
+                                            <div class="messages-item">
+                                                <h6>OK. Let’s meet at 15 pm...</h6>
+                                                <span>Edward Lindgren</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0"><img id="j_idt28"
+                                                             src="#{request.contextPath}/faces/resources/images/Jhianpol.jpg" 
+                                                             alt="" />
+                                            <div class="messages-item">
+                                                <h6>Presentation is ready</h6>
+                                                <span>Noell Blue</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0"><img id="j_idt30"
+                                                             src="#{request.contextPath}/faces/resources/images/Jhianpol.jpg" 
+                                                             alt="" />
+                                            <div class="messages-item">
+                                                <h6>Faulty delivery on #959</h6>
+                                                <span>Gvozden Boskovsky</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="topbar-item settings">
+                                <a href="#">
+                                    <span class="topbar-icon">
+                                        <i class="pi pi-cog"></i>
+                                    </span>
+                                </a>
+                                <ul>
+                                    <li class="layout-submenu-header">
+                                        <h6 class="header-text">Settings</h6>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-user"></i>
+                                            <div class="settings-item">
+                                                <h6>Account Info</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-users"></i>
+                                            <div class="settings-item">
+                                                <h6>Global Accounts</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-bell"></i>
+                                            <div class="settings-item">
+                                                <h6>Notification Preferences</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <i class="pi pi-lock"></i>
+                                            <div class="settings-item">
+                                                <h6>Login Settings</h6>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="topbar-item user-profile">
+                                <a href="#">
+                                    <img id="j_idt32" src="#{request.contextPath}/faces/resources/images/jhianpol.jpg" alt=""/>
+                                    <div class="profile-info">
+                                        <h6>#{objetoUsuario.USUUSU} #{objetoUsuario.USUUSU}</h6>
+                                        <span>#{objetoUsuario.USUUSU}</span>
+                                    </div>
+                                </a>
+                                <ul>
+                                    <li class="layout-submenu-header">
+                                        <img id="j_idt34" src="#{request.contextPath}/faces/resources/images/Jhianpol.jpg" alt="" />
+                                        <div class="profile-info">
+                                            <h6>#{objetoUsuario.USUUSU} #{objetoUsuario.USUUSU}</h6>
+                                            <span>#{objetoUsuario.USUUSU}</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="pi pi-cog"></i>
+                                            <h6>Setting</h6>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="pi pi-cog"></i>
+                                            <h6>Logout</h6>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="pi pi-power-off"></i>
+                                            <h:form>
+                                                <p:commandButton value="Cerrar Sesión" actionListener="#{usuarioC.cerrarSesion()}" style="font-size:15px; font-weight:bold"/>
+                                            </h:form>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <a href="#" class="layout-rightpanel-button">
+                            <h:form>
+                                <p:commandButton value="Cerrar Sesión" actionListener="#{usuarioC.cerrarSesion()}" style="font-size:10px; font-weight:bold"/>
+                            </h:form>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -95,10 +299,10 @@
                                             <i class="pi pi-shopping-cart"></i><span
                                                 class="layout-menuitem-text">REEMBOLSO</span></a>
                                     </li>
-<!--                                    <li id="menuform:om_input" role="menuitem"><a href="/Sisregvg_ODAO/faces/vistas/Dashboard.xhtml">
-                                            <i class="pi pi-shopping-cart"></i><span
-                                                class="layout-menuitem-text">DASHBOARD</span></a>
-                                    </li>-->
+                                    <!--                                    <li id="menuform:om_input" role="menuitem"><a href="/Sisregvg_ODAO/faces/vistas/Dashboard.xhtml">
+                                                                                <i class="pi pi-shopping-cart"></i><span
+                                                                                    class="layout-menuitem-text">DASHBOARD</span></a>
+                                                                        </li>-->
                                 </ul>
                             </li> 
                         </ul>

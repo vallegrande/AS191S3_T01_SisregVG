@@ -116,7 +116,6 @@ public class PersonaImpl extends Conexion implements ICRUD<Personal> {
         List<Personal> listadoPer = null;
         Personal pers;
         String sql = "";
-
         switch (tipo) {
             case 1:
                 sql = "SELECT * FROM vPersonal WHERE ESTPER='A'";

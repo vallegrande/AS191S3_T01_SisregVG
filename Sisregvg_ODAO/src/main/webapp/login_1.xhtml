@@ -4,7 +4,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>SISREGV</title>
+        <title>SISREGVG</title>
 
         <link rel ="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="../resources/css/fontawesome-all.min.css"/>
@@ -37,12 +37,12 @@
                             <p> SISTEMA DE REGISTRO DE EGRESOS DE VALLE GRANDE </p>
 
                             <div class="page-links">
-                                <a class="active">Iniciar Sesión</a><a href="/Sisregvg_ODAO/faces/registrar.xhtml">Registrar</a>
-                                <a class="active"></a><a href="/Sisregvg_ODAO/faces/refactorPWD.xhtml"> Ayuda</a>
+                                <!--<a class="active">Iniciar Sesión</a><a href="/Sisregvg_ODAO/faces/registrar.xhtml">Registrar</a>-->
+                                <a class="active" ></a><a href="/Sisregvg_ODAO/faces/refactorPWD.xhtml"> Ayuda </a>
                             </div>
                             <h:form id="frminiciarsesion">
 
-                                <h3 class="title" style="color:black; font-weight:bold; font-size:14px">  Si ya eres un trabajador en esta empresa, por favor, rellena tus datos a continuación. Si aún no te has registrado, puedes darle click en Registrar </h3>
+                                <h3 class="title" style="color:black; font-weight:bold; font-size:14px">  Si ya eres un trabajador en esta empresa, por favor, rellena tus datos a continuación. Si aún no te has registrado, puedes solicitar un registro al Administrador</h3>
                                 <p:inputText  type="text" value="#{usuarioC.usuario.USUUSU}" placeholder="Usuario"/>
                                 <p:inputText  type="password" id="Pas" value="#{usuarioC.usuario.PWDUSU}" placeholder="Contraseña"/>
 
@@ -50,12 +50,14 @@
 
 
                                     <p:captcha label="Captcha" requiredMessage="Falta verificar Captcha" rendered="#{usuarioC.captcha == 1 eq true}"/>
+                                    <center> 
                                     <p:commandButton id="btnlogin" actionListener="#{usuarioC.acceso()}"
                                                      value="INICIAR SESIÓN" update="frminiciarsesion,:mensajes,btnlogin"
                                                      onstart="if(#{usuarioC.bloquear}){PF('widgetBlock').show()}"
                                                      oncomplete="PF('widgetBlock').hide()"
                                                      class="boton">
                                     </p:commandButton>
+                                     </center>
                                     <p:blockUI block="frminiciarsesion" widgetVar="widgetBlock">
                                         <p:graphicImage value="resources/images/carga.gif"></p:graphicImage>
                                     </p:blockUI>

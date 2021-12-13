@@ -13,8 +13,7 @@
         <h:head>
             <title>Listado de Documentos </title>
             <f:event listener="#{ReembolsoC.listar()}" type="preRenderView" />
-
-
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>      
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />

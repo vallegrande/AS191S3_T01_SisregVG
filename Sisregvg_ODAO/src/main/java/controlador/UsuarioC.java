@@ -1,6 +1,6 @@
 package controlador;
 
-import dao.UsuarioDao;
+import dao.UsuarioD;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import lombok.Data;
 import modelo.Usuario;
 import servicios.EmailS;
+import servicios.EncriptarPWD;
 
 @Data
 @Named(value = "usuarioC")
@@ -17,23 +18,24 @@ import servicios.EmailS;
 public class UsuarioC implements Serializable {
 
     Usuario usuario;
-    UsuarioDao dao;
+    UsuarioD dao;
     private int captcha = 0;
     private int intentos = 0;
     private boolean bloquear = false;
-
+    private String PWDUSU;
 
     //Representa a una clase
     //Objetos
     public UsuarioC() {
 
         usuario = new Usuario();
-        dao = new UsuarioDao();
+        dao = new UsuarioD();
     }
 
     public void login() throws Exception {
         try {
-            dao.login(usuario);
+//            dao.login(usuario);
+            dao.login(usuario, PWDUSU);
         } catch (Exception e) {
             System.out.println("Error en login_C " + e.getMessage());
         }
@@ -47,42 +49,29 @@ public class UsuarioC implements Serializable {
         }
     }
 
-
+    public void loginRol() throws Exception {
+        try {
+            dao.loginRol(usuario);
+        } catch (Exception e) {
+            System.out.println("Error en loginRol_C" + e.getMessage());
+        }
+    }
 
     public void refactorPWD() throws Exception {
+
         try {
-            dao.loginNivel(usuario);
+            String email = usuario.getEmail();
+            EmailS.refactorPWD(email);
         } catch (Exception e) {
             System.out.println("Error en refactorPWD_C" + e.getMessage());
         }
     }
 
-//   public void acceso() throws Exception {
-//        try {
-//            this.login();
-//            if (dao.logueo == false) {
-//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR", "Usuario o contraseña incorrecto"));
-//            } else {
-//                this.loginNivel();
-//                if (dao.nivel == 1) {
-//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
-//                    FacesContext.getCurrentInstance().getExternalContext().redirect("/Sigregvg_ODAO/faces/vistas/Personal.xhtml");
-//                }
-//                if (dao.nivel == 2) {
-//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
-//                    FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistas/Personal.xhtml");
-//                } else {
-//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ERROR", "Usuario o contraseña incorrecto"));
-//                }
-//            }
-//        } catch (Exception e) {
-//            System.out.println("Error en Acceso_C " + e.getMessage());
-//        }
-//    }
     public void acceso() throws Exception {
         try {
-
-            usuario = dao.login(usuario);
+//            usuario = dao.login(usuario);
+            PWDUSU = EncriptarPWD.encriptar(usuario.getPWDUSU());
+            usuario = dao.login(usuario, PWDUSU);
             this.login();
             if (dao.logueo == false) {
                 intentos++;
@@ -114,21 +103,32 @@ public class UsuarioC implements Serializable {
                         setIntentos(0);
                         setCaptcha(0);
 //                        bloquear = true;
-
                     }
                 }
             } else {
-                String usu = usuario.getUSUUSU();
-                EmailS.sendNotification(usu);
-//                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("objetoUsuario", usuario);
-                this.loginNivel();
-                if (dao.nivel == 1) {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡ADELANTE!", "Ingreso Exitoso"));
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistas/Personal.xhtml");
-                }
-                if (dao.nivel == 2) {
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡ADELANTE!", "Ingreso Exitoso"));
-                    FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistas/ValeProvisional.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("objetoUsuario", usuario);
+                this.loginRol();
+                if (dao.rol != null) {
+                    switch (dao.rol) {
+                        case "Monitor":
+                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
+                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistaMonitor/ValeProvisional.xhtml");
+                            break;
+                        case "Tesorero":
+                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
+                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistaTesorero/ValeProvisional.xhtml");
+                            break;
+                        case "Jefe de Área":
+                            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "¡BIENVENIDO!", "Ingreso Exitoso"));
+                            FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistas/Dashboard.xhtml");
+                            break;
+
+                        default:
+                            break;
+                    }
+                    String usu = usuario.getUSUUSU();
+                    EmailS.sendNotification(usu);
+                    EmailS.sendIngresoUsuario(usu);
                 }
             }
         } catch (Exception e) {
@@ -154,14 +154,14 @@ public class UsuarioC implements Serializable {
     // Si la sesión no está iniciada no permitirá entrar a otra vista de la aplicación
     public void seguridadSesion() throws IOException {
         if (obtenerObjetoSesion() == null) {
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/vistas/Personal.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/login_1.xhtml");
         }
     }
 
     // Cerrar y limpiar la sesión y direccionar al xhtml inicial del proyecto
     public void cerrarSesion() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/Login.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/Sisregvg_ODAO/faces/login_1.xhtml");
     }
 
     // Si la sesión está activa se redirecciona a la vista principal

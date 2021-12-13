@@ -7,8 +7,7 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.Properties;
-//@abc123@
+
 
 public class Conexion {
 
@@ -36,22 +35,6 @@ public class Conexion {
         cnx = aCnx;
     }
 
-//    public static Connection conectar() throws Exception {
-//        InputStream inputStream = Conexion.class.getClassLoader().getResourceAsStream("properties/db.properties");
-//        Properties properties = new Properties();
-//        try {
-//            properties.load(inputStream);
-//            String user = properties.getProperty("user");
-//            String pwd = properties.getProperty("pwd");
-//            String driver = properties.getProperty("driver");
-//            String url = properties.getProperty("url");
-//            Class.forName(driver).newInstance();
-//            cnx = DriverManager.getConnection(url, user, pwd);
-//        } catch (Exception e) {
-//            System.out.println("Error de Conexión/Conectar " + e.getMessage());
-//        }
-//        return cnx;
-//    }
 
     public void cerrar() throws Exception {
         if (cnx != null) {

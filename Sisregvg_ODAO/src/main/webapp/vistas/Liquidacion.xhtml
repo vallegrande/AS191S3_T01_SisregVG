@@ -12,7 +12,7 @@
         <h:head>
             <title>Listado de la Liquidacion</title>
             <f:event listener="#{LiquidacionC.listar()}" type="preRenderView" />
-
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>      
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
@@ -123,10 +123,10 @@
                                 </h:form>
                             </div>
 
-<!--                            <p:outputPanel>
-                                <h:outputText value="Buscar:"/>
-                                <h:inputText id="globalFilter" onkeyup="PF('tblLiquidacion').filter()" style="width:200px"/>
-                            </p:outputPanel>-->
+                            <!--                            <p:outputPanel>
+                                                            <h:outputText value="Buscar:"/>
+                                                            <h:inputText id="globalFilter" onkeyup="PF('tblLiquidacion').filter()" style="width:200px"/>
+                                                        </p:outputPanel>-->
 
                             <div style="float: right">
                                 <p:commandButton value="Exportar Liquidacion" actionListener="#{LiquidacionC.reporteLiquidación()}" 
@@ -143,7 +143,7 @@
                     <p/>
 
                     <center> 
-                     <f:facet name= "header"><center style="color:black; font-weight:bold; font-size:25px">LISTADO DE LA LIQUIDACIÓN</center></f:facet>
+                        <f:facet name= "header"><center style="color:black; font-weight:bold; font-size:25px">LISTADO DE LA LIQUIDACIÓN</center></f:facet>
 
                         <p:column style="width:30px" headerText="Nombre" sortBy="#{tblliq.NOMPER}" filterBy="#{tblliq.NOMPER}" > 
 

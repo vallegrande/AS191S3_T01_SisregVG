@@ -4,7 +4,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Spoonik</title>
+        <title>SISREGVG</title>
         <link rel ="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="../resources/css/fontawesome-all.min.css"/>
         <link rel="stylesheet" type="text/css" href="../resources/css/iofrm-style.css"/>
@@ -42,7 +42,7 @@
                                 <h1 class="title" style="color:black; font-weight:bold; font-size:18px">¿Se te olvidó tu contraseña?</h1>
                                  <h1 class="title" style="color:black;  font-size:14px">No te preocupes, nosotros te ayudamos, brindanos tu correo para poder enviarte tu nueva contraseña</h1>
                                 <p:outputLabel value = "Email" for="txtCorreo"/>
-                                <p:inputText value ="#{personaC.per.email}" id="txtCorreo" maxlength="50" 
+                                <p:inputText value ="#{usuarioC.usuario.email}" id="txtCorreo" maxlength="50" 
                                              requiredMessage="Ingrese correo electrónico" style="width: 100%" >
                                     <f:validator validatorId="vCorreo" />
                                     <p:ajax  update="msgCorreo" delay="800" event="keyup" />
@@ -50,10 +50,9 @@
                                 </p:inputText>
                                 <p:message id="msgCorreo" for="txtCorreo"  showDetail="true" />
 
-<!--<p:inputText  type="password" id="Pas" value="#{usuarioC.usuario.PWDUSU}" placeholder="Contraseña"/>-->
-                                <p:captcha  label="Captcha" requiredMessage="Falta usuarioC.usuario.verificar Captcha" rendered="#{LoginC.capcha == 1 eq true}"/>
+                              
                                 <div class="form-button">
-                                    <center> <p:commandButton actionListener="#{usuarioC.acceso()}"
+                                    <center> <p:commandButton actionListener="#{usuarioC.refactorPWD()}"
                                                               update="frminiciarsesion" 
                                                               value="Acceder"
                                                               class="ibtn"

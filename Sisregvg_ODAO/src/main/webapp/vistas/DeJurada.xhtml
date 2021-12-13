@@ -16,6 +16,7 @@
                 <h:head>
                     <title>Listado de Declaración Jurada</title>
                     <f:event listener="#{DeJuradaC.listar()}" type="preRenderView" />
+                      <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
                 </h:head>
                 <p:growl id="mensajes" severity="info,fatal" showSummary="true" showDetail="true"/>
 

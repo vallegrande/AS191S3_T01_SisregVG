@@ -9,11 +9,10 @@
                 xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
     <ui:define name="content">
-
         <h:head>
             <title>Listado de Vale Provisional</title>
             <f:event listener="#{ValeProvisionalC.listar()}" type="preRenderView" />
-
+            <f:event type="preRenderView" listener="#{usuarioC.seguridadSesion()}"/>
         </h:head>
         <h:body>      
             <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
@@ -237,8 +236,6 @@
                         <p:inputText value="#{ValeProvisionalC.provisional.actval}" maxlength="500"  requiredMessage="Digitar la actividad">
                             <p:keyFilter regEx="/[A-Z_a-z_ñ_á_é_í_ó_ú_ _,_;]/"/>
                         </p:inputText>
-
-
                         <p:outputLabel value="Solicitante"/>
                         <p:selectOneMenu id="per" value="#{ValeProvisionalC.provisional.personal.idper}" style="width:300px"
                                          filter="true" filterMatchMode="contains" requiredMessage="Seleccione el solicitante" >
@@ -248,9 +245,6 @@
                                            itemLabel="#{solicitante.nombre}
                                            #{solicitante.apellido}"/>
                         </p:selectOneMenu>
-
-
-
                         <p:commandButton value="Modificar" actionListener="#{ValeProvisionalC.modificar()}" 
                                          update=" :formtwo:tablaVal mensaje" oncomplete="PF('wdlgDatos').hide();" >
                             <p:confirm header="Confirmación" message="¿Deseas Modificar?" icon="ui-icon-alert"/>
@@ -261,7 +255,6 @@
                             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
                             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/>
                         </p:confirmDialog>
-
                     </p:panelGrid>
                 </h:form>          
             </p:dialog>

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <ui:define name="content">
+        <h:head>
+
+        </h:head>
+        <h:outputStylesheet library="css" name="primeflex.min.css"/>
+        <h:outputStylesheet library="css" name="primeflex.css"/>
+        <h:body>  
+            <div class="p-grid">
+                <div class="p-col">
+                    <div class="box" style="background-color: #ced4da">
+                        <p:pieChart model="#{dashboardC.dashboardCargo}" style="width: 125%; height: 500px;"/>
+                    </div>
+                    <p/>
+                    <p  style="font-size: 150%;color:background; font-weight:bold; "><center> PERSONAL INGRESADO MEDIANTE SU CARGO</center> </p>
+                </div>  
+                <div class="p-col">
+                    <div class="box" style="background-color: #FEEDAF">
+                        <p:pieChart model="#{dashboardC.dashboardPersonal}" style="width: 125%; height: 500px;"/>
+                    </div>
+                    <p/>
+                    <p  style="font-size: 150%;color:background; font-weight:bold; "><center>PERSONAL ACTIVO E INACTIVO </center></p>
+                </div>  
+            </div>
+              <h:form> 
+                <center> 
+                    <p:linkButton value="VOLVER" outcome="/vistas/Personal" icon="ui-icon-arrow-right" style="font-size:35px; font-weight:bold"/>
+                </center>
+                 </h:form>
+
+
+
+        </h:body>
+    </ui:define>
+</ui:composition>
